@@ -1,3 +1,5 @@
+using SysPecNSLib;
+
 namespace SysPecNsDesk
 {
     public partial class Form1 : Form
@@ -101,8 +103,16 @@ namespace SysPecNsDesk
             }
             else
             {
-                btnconfirma.Enabled= true;
+                btnconfirma.Enabled = true;
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Nivel nivel = new Nivel(textBox1.Text,textBox2.Text);
+            nivel.inserir();
+            MessageBox.Show("Nível Gravado com Sucesso!!");
+            button1.Enabled = false;
         }
     }
 }

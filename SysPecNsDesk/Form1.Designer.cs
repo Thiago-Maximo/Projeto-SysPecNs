@@ -36,6 +36,9 @@
             Operação = new Label();
             Numero1 = new Label();
             Numero2 = new Label();
+            textBox1 = new TextBox();
+            textBox2 = new TextBox();
+            button1 = new Button();
             SuspendLayout();
             // 
             // btnconfirma
@@ -112,11 +115,39 @@
             Numero2.TabIndex = 7;
             Numero2.Text = "2° Numero";
             // 
+            // textBox1
+            // 
+            textBox1.Location = new Point(397, 253);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(100, 23);
+            textBox1.TabIndex = 8;
+            textBox1.TextChanged += textBox1_TextChanged;
+            // 
+            // textBox2
+            // 
+            textBox2.Location = new Point(503, 253);
+            textBox2.Name = "textBox2";
+            textBox2.Size = new Size(100, 23);
+            textBox2.TabIndex = 9;
+            // 
+            // button1
+            // 
+            button1.Location = new Point(397, 291);
+            button1.Name = "button1";
+            button1.Size = new Size(206, 23);
+            button1.TabIndex = 10;
+            button1.Text = "button1";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(button1);
+            Controls.Add(textBox2);
+            Controls.Add(textBox1);
             Controls.Add(Numero2);
             Controls.Add(Numero1);
             Controls.Add(Operação);
@@ -142,5 +173,8 @@
         private Label Operação;
         private Label Numero1;
         private Label Numero2;
+        private TextBox textBox1;
+        private TextBox textBox2;
+        private Button button1;
     }
 }

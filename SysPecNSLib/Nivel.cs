@@ -30,7 +30,10 @@ namespace SysPecNSLib
         //métodos requisitos
         public void inserir() // método para inserir registro de nível na base de dados
         {
-
+            var cmd = Banco.Abrir();
+            cmd.CommandType = System.Data.CommandType.Text;
+            cmd.CommandText = $"insert niveis(id,nome,sigla) values({Nome},{Sigla})";
+            cmd.ExecuteNonQuery();
         }
         public static Nivel ObterPorId(int id)
         {
