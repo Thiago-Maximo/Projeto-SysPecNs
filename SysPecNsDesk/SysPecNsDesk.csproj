@@ -9,6 +9,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\SysPecNSLib\SysPecNSLib.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Reference Include="SysPecNSLib">
       <HintPath>..\SysPecNSLib\bin\Debug\net8.0\SysPecNSLib.dll</HintPath>
     </Reference>

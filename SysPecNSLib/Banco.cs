@@ -4,36 +4,40 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
+
 namespace SysPecNSLib
 {
     /// <summary>
-    /// Classe estatica (Não precisa de declaração de instancia) de Conexão de Banco de Dados
+    /// Classe estática que fornece métodos para manipulação de conexão com o banco de dados.
     /// </summary>
-    public static class Banco //Classe de conexão de banco de dados
-    
+    public static class Banco
     {
         /// <summary>
-        /// Método abrir da classe Banco utilizado para representar comnados sql
-        /// no servidor, cujo os dados foram informados na string de conexão (strcon)
+        /// Método que abre uma conexão com o banco de dados e retorna um objeto MySqlCommand.
         /// </summary>
-        /// <returns>Entrega um objeto de comandos SQL, que serão exexutados na conexão informada</returns>
-        public static MySqlCommand Abrir() //método de conexão
+        /// <returns>Um objeto MySqlCommand que pode ser usado para executar comandos SQL na conexão informada.</returns>
+        public static MySqlCommand Abrir()
         {
-            //dados da conexão
-            string strconn = @"server=127.0.0.1;database=syspecdb;user=root;password";
+            // Dados da conexão
+            string strconn = @"server=127.0.0.1;database=syspecdb;user=root;password=";
+
+            // Criação da conexão e comando
             MySqlConnection cn = new MySqlConnection(strconn);
             MySqlCommand cmd = new MySqlCommand();
-            try //tratamento de conexão
+
+            try
             {
                 cn.Open();
                 cmd.Connection = cn;
             }
-            catch (Exception) 
+            catch (MySqlException ex)
             {
-                throw;
+                // Registrar ou tratar a exceção adequadamente
+                Console.WriteLine("Erro ao conectar-se ao banco de dados: " + ex.Message);
+                throw; // Re-levanta a exceção para que o chamador possa tratá-la
             }
+
             return cmd;
-            
         }
     }
 }
