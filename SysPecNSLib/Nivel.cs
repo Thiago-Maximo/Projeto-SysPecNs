@@ -86,9 +86,13 @@ namespace SysPecNSLib
             cmd.CommandText = $"update niveis" + $"set nome = '{Nome}','{Sigla} where id = {Id}";
             return cmd.ExecuteNonQuery() > 0 ? true : false;
         }
-        public void Excluir(int id)
+        public void Excluir()
         {
-
+            // em geral nada se exclui de uma tabela
+            var cmd = Banco.Abrir();
+            cmd.CommandType = CommandType.Text;
+            cmd.CommandText = $"Delete from niveis where id = {Id}";
+            cmd.ExecuteNonQuery();
         }
     }
 }
