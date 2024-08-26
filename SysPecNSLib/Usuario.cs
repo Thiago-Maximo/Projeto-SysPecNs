@@ -101,7 +101,7 @@ namespace SysPecNSLib
             List<Usuario> lista = new();
             var cmd = Banco.Abrir();
             cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "Select * from usarios order by nome";
+            cmd.CommandText = "Select * from usuarios order by nome";
             var dr = cmd.ExecuteReader();
             while (dr.Read())
             {
