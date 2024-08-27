@@ -96,12 +96,20 @@ namespace SysPecNSLib
         /// é possivel utilizar o if no lugar do while, while é mais utilizado para lista de informações
         /// </summary>
         /// <returns></returns>
-        public static List<Usuario> ObterLista()
+        public static List<Usuario> ObterLista(string? nome = "")
         {
             List<Usuario> lista = new();
             var cmd = Banco.Abrir();
             cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "Select * from usuarios order by nome";
+            if (nome == "")
+            {
+                cmd.CommandText = "Select * from usuarios order by nome";
+            }
+            else
+            {
+                cmd.CommandText = $"Select * from usuarios where nome like '%{nome}%' order by nome";
+            }
+
             var dr = cmd.ExecuteReader();
             while (dr.Read())
             {

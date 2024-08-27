@@ -25,9 +25,54 @@ namespace SysPecNsDesk
             cmbNivel.DataSource = niveis;
             cmbNivel.DisplayMember = "Nome";
             cmbNivel.ValueMember = "Id";
+            CarregaGrid();
+        }
 
+        private void btnInserir_Click(object sender, EventArgs e)
+        {
+            Usuario usuario = new(
+                txtNome.Text,
+                txtEmail.Text,
+                txtSenha.Text,
+                Nivel.ObterPorId(Convert.ToInt32(cmbNivel.SelectedValue))
+                );
+            usuario.Inserir();
+            if (usuario.Id > 0)
+            {
+                txtId.Text = usuario.Id.ToString();
+                MessageBox.Show($"O Usuario {usuario.Nome}, foi gravado " +
+                    $"com sucesso, com o ID {usuario.Id}");
+                txtId.Clear();
+                txtNome.Clear();
+                txtEmail.Clear();
+                txtSenha.Clear();
+                txtconfSenha.Clear();
+                txtNome.Focus();
+                FrmUsuario_Load(sender, e);
+
+            }
+            else
+            {
+                MessageBox.Show("Falha ao Grava Usuario!");
+            }
+
+        }
+
+        private void txtBusca_TextChanged(object sender, EventArgs e)
+        {
+            if (txtBusca.Text.Length > 0)
+            {
+                CarregaGrid(txtBusca.Text);
+            }
+            else
+            {
+                CarregaGrid();
+            }
+        }
+        private void CarregaGrid(string nome = "")
+        {
             // preechendo o data grid com os usuarios cadastrados
-            var lista = Usuario.ObterLista();
+            var lista = Usuario.ObterLista(nome);
             dgvUsuarios.Rows.Clear();
             int cont = 0;
             foreach (var usuario in lista)
@@ -40,12 +85,6 @@ namespace SysPecNsDesk
                 dgvUsuarios.Rows[cont].Cells[4].Value = usuario.Ativo;
                 cont++;
             }
-        }
-
-        private void btnInserir_Click(object sender, EventArgs e)
-        {
-            Usuario usuario = new();
-
         }
     }
 }
