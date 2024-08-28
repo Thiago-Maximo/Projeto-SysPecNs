@@ -169,7 +169,7 @@ namespace SysPecNSLib
         }
         public static void Restaurar(int id)
         {
-            // Deixar o ativo do usuario pata verdadeiro = Ativo no sistema
+            // Deixar o ativo do usuario para verdadeiro = Ativo no sistema
             var cmd = Banco.Abrir();
             cmd.CommandText = $"update usuarios set ativo = 1 where id = {id}";
             cmd.ExecuteNonQuery();
