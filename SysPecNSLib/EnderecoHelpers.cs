@@ -14,5 +14,6 @@ internal static class EnderecoHelpers
         var cmd = Banco.Abrir();
         cmd.CommandType = CommandType.Text;
         cmd.CommandText = $"Select * from enderecos where id = {Id}";
+        return endereco;
     }
 }
