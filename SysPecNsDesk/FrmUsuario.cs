@@ -91,5 +91,35 @@ namespace SysPecNsDesk
         {
 
         }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            if (VerificandoControles())
+            {
+                var msg = MessageBox.Show("Deseja continuar o cadastro?",
+                    "Confirmação de saída",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Warning,
+                    MessageBoxDefaultButton.Button1);
+                if (msg == DialogResult.No) this.Close();
+            }
+            else { this.Close(); }
+
+        }
+        private bool VerificandoControles()
+        {
+            if (txtNome.Text != string.Empty ||
+                txtEmail.Text != string.Empty ||
+                txtSenha.Text != string.Empty ||
+                txtconfSenha.Text != string.Empty
+                )
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
 }

@@ -43,25 +43,25 @@
             label2 = new Label();
             label1 = new Label();
             txtTelefone = new TextBox();
-            monthcalendarDataNasc = new MonthCalendar();
             dateTimePicker1 = new DateTimePicker();
+            btnCancelar = new Button();
             SuspendLayout();
             // 
             // btnDeletar
             // 
-            btnDeletar.Location = new Point(424, 385);
+            btnDeletar.Location = new Point(398, 319);
             btnDeletar.Name = "btnDeletar";
-            btnDeletar.Size = new Size(75, 23);
-            btnDeletar.TabIndex = 32;
+            btnDeletar.Size = new Size(80, 23);
+            btnDeletar.TabIndex = 7;
             btnDeletar.Text = "&Deletar";
             btnDeletar.UseVisualStyleBackColor = true;
             // 
             // btnEditar
             // 
-            btnEditar.Location = new Point(343, 385);
+            btnEditar.Location = new Point(311, 319);
             btnEditar.Name = "btnEditar";
-            btnEditar.Size = new Size(75, 23);
-            btnEditar.TabIndex = 31;
+            btnEditar.Size = new Size(80, 23);
+            btnEditar.TabIndex = 6;
             btnEditar.Text = "&Editar";
             btnEditar.UseVisualStyleBackColor = true;
             // 
@@ -79,7 +79,7 @@
             txtCpf.Location = new Point(262, 129);
             txtCpf.Name = "txtCpf";
             txtCpf.Size = new Size(100, 23);
-            txtCpf.TabIndex = 28;
+            txtCpf.TabIndex = 3;
             txtCpf.UseSystemPasswordChar = true;
             // 
             // chkAtivo
@@ -97,14 +97,14 @@
             txtEmail.Location = new Point(262, 76);
             txtEmail.Name = "txtEmail";
             txtEmail.Size = new Size(126, 23);
-            txtEmail.TabIndex = 25;
+            txtEmail.TabIndex = 1;
             // 
             // txtNome
             // 
             txtNome.Location = new Point(322, 29);
             txtNome.Name = "txtNome";
             txtNome.Size = new Size(177, 23);
-            txtNome.TabIndex = 24;
+            txtNome.TabIndex = 0;
             // 
             // txtId
             // 
@@ -116,10 +116,10 @@
             // 
             // btnInserir
             // 
-            btnInserir.Location = new Point(257, 385);
+            btnInserir.Location = new Point(219, 319);
             btnInserir.Name = "btnInserir";
             btnInserir.Size = new Size(80, 23);
-            btnInserir.TabIndex = 22;
+            btnInserir.TabIndex = 5;
             btnInserir.Text = "&Inserir";
             btnInserir.UseVisualStyleBackColor = true;
             btnInserir.Click += btnInserir_Click;
@@ -174,28 +174,32 @@
             txtTelefone.Location = new Point(404, 76);
             txtTelefone.Name = "txtTelefone";
             txtTelefone.Size = new Size(95, 23);
-            txtTelefone.TabIndex = 33;
-            // 
-            // monthcalendarDataNasc
-            // 
-            monthcalendarDataNasc.Location = new Point(262, 184);
-            monthcalendarDataNasc.Name = "monthcalendarDataNasc";
-            monthcalendarDataNasc.TabIndex = 34;
+            txtTelefone.TabIndex = 2;
             // 
             // dateTimePicker1
             // 
-            dateTimePicker1.Location = new Point(501, 254);
+            dateTimePicker1.Location = new Point(278, 207);
             dateTimePicker1.Name = "dateTimePicker1";
             dateTimePicker1.Size = new Size(200, 23);
-            dateTimePicker1.TabIndex = 35;
+            dateTimePicker1.TabIndex = 4;
+            // 
+            // btnCancelar
+            // 
+            btnCancelar.Location = new Point(485, 319);
+            btnCancelar.Name = "btnCancelar";
+            btnCancelar.Size = new Size(80, 23);
+            btnCancelar.TabIndex = 31;
+            btnCancelar.Text = "&Cancelar";
+            btnCancelar.UseVisualStyleBackColor = true;
+            btnCancelar.Click += button1_Click;
             // 
             // FrmCliente
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(btnCancelar);
             Controls.Add(dateTimePicker1);
-            Controls.Add(monthcalendarDataNasc);
             Controls.Add(txtTelefone);
             Controls.Add(btnDeletar);
             Controls.Add(btnEditar);
@@ -235,7 +239,7 @@
         private Label label2;
         private Label label1;
         private TextBox txtTelefone;
-        private MonthCalendar monthcalendarDataNasc;
         private DateTimePicker dateTimePicker1;
+        private Button btnCancelar;
     }
 }

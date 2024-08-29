@@ -23,15 +23,14 @@ namespace SysPecNsDesk
 
         }
 
-        private  void btnInserir_Click(object sender, EventArgs e)
+        private void btnInserir_Click(object sender, EventArgs e)
         {
             Cliente cliente = new(
                 txtNome.Text,
-                txtEmail.Text,
                 txtCpf.Text,
                 txtTelefone.Text,
-               // Convert.ToDateTime (monthcalendarDataNasc.DataContext)
-               dateTimePicker1.Value
+                txtEmail.Text,
+                dateTimePicker1.Value
                 );
             cliente.Inserir();
             if (cliente.Id > 0)
@@ -52,6 +51,11 @@ namespace SysPecNsDesk
             {
                 MessageBox.Show("Falha ao Grava Usuario!");
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

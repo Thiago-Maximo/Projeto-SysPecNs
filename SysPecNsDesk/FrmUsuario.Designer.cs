@@ -51,6 +51,7 @@
             btnEditar = new Button();
             btnDeletar = new Button();
             txtBusca = new TextBox();
+            btnCancelar = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvUsuarios).BeginInit();
             SuspendLayout();
             // 
@@ -253,11 +254,23 @@
             txtBusca.TabIndex = 17;
             txtBusca.TextChanged += txtBusca_TextChanged;
             // 
+            // btnCancelar
+            // 
+            btnCancelar.Location = new Point(529, 210);
+            btnCancelar.Name = "btnCancelar";
+            btnCancelar.Size = new Size(80, 23);
+            btnCancelar.TabIndex = 32;
+            btnCancelar.Text = "&Cancelar";
+            btnCancelar.UseVisualStyleBackColor = true;
+            btnCancelar.Click += btnCancelar_Click;
+            // 
             // FrmUsuario
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            CancelButton = btnCancelar;
             ClientSize = new Size(800, 450);
+            Controls.Add(btnCancelar);
             Controls.Add(txtBusca);
             Controls.Add(btnDeletar);
             Controls.Add(btnEditar);
@@ -309,5 +322,6 @@
         private Button btnEditar;
         private Button btnDeletar;
         private TextBox txtBusca;
+        private Button btnCancelar;
     }
 }
