@@ -85,5 +85,66 @@ namespace SysPecNsDesk
                 this.Close();
             }
         }
+
+        private void CadEndereco_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnCancelarEndereco_Click(object sender, EventArgs e)
+        {
+            if (VerificaControles())
+            {
+                var msg = MessageBox.Show("Deseja continuar o cadastro?",
+                    "Confirmação de saída",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Warning,
+                    MessageBoxDefaultButton.Button1);
+                if (msg == DialogResult.No) this.Close();
+            }
+            else { this.Close(); }
+        }
+        private bool VerificaControles()
+        {
+            if (txtIDEndereco.Text != string.Empty ||
+                txtIDCliente.Text != string.Empty ||
+                txtLogradouro.Text != string.Empty ||
+                txtCidade.Text != string.Empty ||
+                txtCep.Text != string.Empty ||
+                txtBairro.Text != string.Empty ||
+                txtTipoEndereco.Text != string.Empty ||
+                txtUf.Text != string.Empty
+                )
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        private void dgvEnderecos_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            // preechendo o data grid com os usuarios cadastrados
+            var lista = Usuario.ObterLista(txtComplemento.Text);
+            dgvEnderecos.Rows.Clear();
+            int cont = 0;
+            foreach (var usuario in lista)
+            {
+                dgvEnderecos.Rows.Add();
+                dgvEnderecos.Rows[cont].Cells[0].Value = usuario.Id;
+                dgvEnderecos.Rows[cont].Cells[1].Value = usuario.Nome;
+                dgvEnderecos.Rows[cont].Cells[2].Value = usuario.Email;
+                dgvEnderecos.Rows[cont].Cells[3].Value = usuario.Nivel.Nome;
+                dgvEnderecos.Rows[cont].Cells[4].Value = usuario.Ativo;
+                dgvEnderecos.Rows[cont].Cells[5].Value = usuario.Ativo;
+                dgvEnderecos.Rows[cont].Cells[6].Value = usuario.Ativo;
+                dgvEnderecos.Rows[cont].Cells[7].Value = usuario.Ativo;
+                dgvEnderecos.Rows[cont].Cells[8].Value = usuario.Ativo;
+                dgvEnderecos.Rows[cont].Cells[9].Value = usuario.Ativo;
+                cont++;
+            }
+        }
     }
 }

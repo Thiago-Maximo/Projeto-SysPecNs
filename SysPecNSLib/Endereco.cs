@@ -126,6 +126,12 @@ namespace SysPecNSLib
             cmd.ExecuteNonQuery();
             cmd.Connection.Close();
         }
+        public void Deletar()
+        {
+            var cmd = Banco.Abrir();
+            cmd.CommandType = CommandType.Text;
+            cmd.CommandText = $"Delete from enderecos where cliente_id = {ClienteId}";
+        }
 
     }
 

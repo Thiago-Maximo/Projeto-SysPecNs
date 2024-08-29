@@ -86,12 +86,6 @@ namespace SysPecNsDesk
                 cont++;
             }
         }
-
-        private void dgvUsuarios_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             if (VerificandoControles())
@@ -120,6 +114,11 @@ namespace SysPecNsDesk
             {
                 return false;
             }
+        }
+
+        private void dgvUsuarios_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }
