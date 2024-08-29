@@ -153,6 +153,7 @@
             Name = "FrmPrincipal";
             Text = "FrmPrincipal";
             WindowState = FormWindowState.Maximized;
+      
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
             ResumeLayout(false);

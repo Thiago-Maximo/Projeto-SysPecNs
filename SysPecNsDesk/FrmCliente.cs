@@ -52,10 +52,38 @@ namespace SysPecNsDesk
                 MessageBox.Show("Falha ao Grava Usuario!");
             }
         }
-
-        private void button1_Click(object sender, EventArgs e)
+        private bool VerificandoControles()
         {
-            this.Close();
+            if (txtNome.Text != string.Empty ||
+                txtEmail.Text != string.Empty ||
+                txtTelefone.Text != string.Empty ||
+                txtCpf.Text != string.Empty
+                )
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+
+            if (VerificandoControles())
+            {
+                var msg = MessageBox.Show("Deseja continuar o cadastro?",
+                    "Confirmação de saída",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Warning,
+                    MessageBoxDefaultButton.Button1);
+                if (msg == DialogResult.No) this.Close();
+            }
+            else
+            {
+                this.Close();
+            }
         }
     }
 }

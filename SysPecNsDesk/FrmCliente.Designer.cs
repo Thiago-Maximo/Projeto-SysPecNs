@@ -45,11 +45,16 @@
             txtTelefone = new TextBox();
             dateTimePicker1 = new DateTimePicker();
             btnCancelar = new Button();
+            ControlePagina = new TabControl();
+            CadCleinte = new TabPage();
+            CadEndereco = new TabPage();
+            ControlePagina.SuspendLayout();
+            CadCleinte.SuspendLayout();
             SuspendLayout();
             // 
             // btnDeletar
             // 
-            btnDeletar.Location = new Point(398, 319);
+            btnDeletar.Location = new Point(349, 325);
             btnDeletar.Name = "btnDeletar";
             btnDeletar.Size = new Size(80, 23);
             btnDeletar.TabIndex = 7;
@@ -58,7 +63,7 @@
             // 
             // btnEditar
             // 
-            btnEditar.Location = new Point(311, 319);
+            btnEditar.Location = new Point(262, 325);
             btnEditar.Name = "btnEditar";
             btnEditar.Size = new Size(80, 23);
             btnEditar.TabIndex = 6;
@@ -68,7 +73,7 @@
             // lblDataNasc
             // 
             lblDataNasc.AutoSize = true;
-            lblDataNasc.Location = new Point(313, 160);
+            lblDataNasc.Location = new Point(264, 166);
             lblDataNasc.Name = "lblDataNasc";
             lblDataNasc.Size = new Size(114, 15);
             lblDataNasc.TabIndex = 30;
@@ -76,7 +81,7 @@
             // 
             // txtCpf
             // 
-            txtCpf.Location = new Point(262, 129);
+            txtCpf.Location = new Point(213, 135);
             txtCpf.Name = "txtCpf";
             txtCpf.Size = new Size(100, 23);
             txtCpf.TabIndex = 3;
@@ -85,7 +90,7 @@
             // chkAtivo
             // 
             chkAtivo.AutoSize = true;
-            chkAtivo.Location = new Point(424, 129);
+            chkAtivo.Location = new Point(375, 135);
             chkAtivo.Name = "chkAtivo";
             chkAtivo.Size = new Size(54, 19);
             chkAtivo.TabIndex = 27;
@@ -94,21 +99,21 @@
             // 
             // txtEmail
             // 
-            txtEmail.Location = new Point(262, 76);
+            txtEmail.Location = new Point(213, 82);
             txtEmail.Name = "txtEmail";
             txtEmail.Size = new Size(126, 23);
             txtEmail.TabIndex = 1;
             // 
             // txtNome
             // 
-            txtNome.Location = new Point(322, 29);
+            txtNome.Location = new Point(273, 35);
             txtNome.Name = "txtNome";
             txtNome.Size = new Size(177, 23);
             txtNome.TabIndex = 0;
             // 
             // txtId
             // 
-            txtId.Location = new Point(262, 29);
+            txtId.Location = new Point(213, 35);
             txtId.Name = "txtId";
             txtId.ReadOnly = true;
             txtId.Size = new Size(54, 23);
@@ -116,7 +121,7 @@
             // 
             // btnInserir
             // 
-            btnInserir.Location = new Point(219, 319);
+            btnInserir.Location = new Point(170, 325);
             btnInserir.Name = "btnInserir";
             btnInserir.Size = new Size(80, 23);
             btnInserir.TabIndex = 5;
@@ -127,7 +132,7 @@
             // lblCpf
             // 
             lblCpf.AutoSize = true;
-            lblCpf.Location = new Point(262, 111);
+            lblCpf.Location = new Point(213, 117);
             lblCpf.Name = "lblCpf";
             lblCpf.Size = new Size(28, 15);
             lblCpf.TabIndex = 21;
@@ -136,7 +141,7 @@
             // lblTelefone
             // 
             lblTelefone.AutoSize = true;
-            lblTelefone.Location = new Point(448, 58);
+            lblTelefone.Location = new Point(399, 64);
             lblTelefone.Name = "lblTelefone";
             lblTelefone.Size = new Size(51, 15);
             lblTelefone.TabIndex = 20;
@@ -145,7 +150,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(262, 58);
+            label3.Location = new Point(213, 64);
             label3.Name = "label3";
             label3.Size = new Size(36, 15);
             label3.TabIndex = 19;
@@ -154,7 +159,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(322, 11);
+            label2.Location = new Point(273, 17);
             label2.Name = "label2";
             label2.Size = new Size(40, 15);
             label2.TabIndex = 18;
@@ -163,7 +168,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(262, 11);
+            label1.Location = new Point(213, 17);
             label1.Name = "label1";
             label1.Size = new Size(18, 15);
             label1.TabIndex = 17;
@@ -171,55 +176,89 @@
             // 
             // txtTelefone
             // 
-            txtTelefone.Location = new Point(404, 76);
+            txtTelefone.Location = new Point(355, 82);
             txtTelefone.Name = "txtTelefone";
             txtTelefone.Size = new Size(95, 23);
             txtTelefone.TabIndex = 2;
             // 
             // dateTimePicker1
             // 
-            dateTimePicker1.Location = new Point(278, 207);
+            dateTimePicker1.Location = new Point(229, 213);
             dateTimePicker1.Name = "dateTimePicker1";
             dateTimePicker1.Size = new Size(200, 23);
             dateTimePicker1.TabIndex = 4;
             // 
             // btnCancelar
             // 
-            btnCancelar.Location = new Point(485, 319);
+            btnCancelar.Location = new Point(436, 325);
             btnCancelar.Name = "btnCancelar";
             btnCancelar.Size = new Size(80, 23);
             btnCancelar.TabIndex = 31;
             btnCancelar.Text = "&Cancelar";
             btnCancelar.UseVisualStyleBackColor = true;
-            btnCancelar.Click += button1_Click;
+            btnCancelar.Click += btnCancelar_Click;
+            // 
+            // ControlePagina
+            // 
+            ControlePagina.Controls.Add(CadCleinte);
+            ControlePagina.Controls.Add(CadEndereco);
+            ControlePagina.Location = new Point(1, 0);
+            ControlePagina.Name = "ControlePagina";
+            ControlePagina.SelectedIndex = 0;
+            ControlePagina.Size = new Size(787, 453);
+            ControlePagina.TabIndex = 32;
+            // 
+            // CadCleinte
+            // 
+            CadCleinte.Controls.Add(dateTimePicker1);
+            CadCleinte.Controls.Add(btnCancelar);
+            CadCleinte.Controls.Add(label1);
+            CadCleinte.Controls.Add(label2);
+            CadCleinte.Controls.Add(txtTelefone);
+            CadCleinte.Controls.Add(label3);
+            CadCleinte.Controls.Add(btnDeletar);
+            CadCleinte.Controls.Add(lblTelefone);
+            CadCleinte.Controls.Add(btnEditar);
+            CadCleinte.Controls.Add(lblCpf);
+            CadCleinte.Controls.Add(lblDataNasc);
+            CadCleinte.Controls.Add(btnInserir);
+            CadCleinte.Controls.Add(txtCpf);
+            CadCleinte.Controls.Add(txtId);
+            CadCleinte.Controls.Add(chkAtivo);
+            CadCleinte.Controls.Add(txtNome);
+            CadCleinte.Controls.Add(txtEmail);
+            CadCleinte.Location = new Point(4, 24);
+            CadCleinte.Name = "CadCleinte";
+            CadCleinte.Padding = new Padding(3);
+            CadCleinte.Size = new Size(779, 425);
+            CadCleinte.TabIndex = 0;
+            CadCleinte.Text = "Cadastro de Cliente";
+            CadCleinte.UseVisualStyleBackColor = true;
+            // 
+            // CadEndereco
+            // 
+            CadEndereco.Location = new Point(4, 24);
+            CadEndereco.Name = "CadEndereco";
+            CadEndereco.Padding = new Padding(3);
+            CadEndereco.Size = new Size(779, 425);
+            CadEndereco.TabIndex = 1;
+            CadEndereco.Text = "Cadastro de Endereço";
+            CadEndereco.UseVisualStyleBackColor = true;
             // 
             // FrmCliente
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            CancelButton = btnCancelar;
             ClientSize = new Size(800, 450);
-            Controls.Add(btnCancelar);
-            Controls.Add(dateTimePicker1);
-            Controls.Add(txtTelefone);
-            Controls.Add(btnDeletar);
-            Controls.Add(btnEditar);
-            Controls.Add(lblDataNasc);
-            Controls.Add(txtCpf);
-            Controls.Add(chkAtivo);
-            Controls.Add(txtEmail);
-            Controls.Add(txtNome);
-            Controls.Add(txtId);
-            Controls.Add(btnInserir);
-            Controls.Add(lblCpf);
-            Controls.Add(lblTelefone);
-            Controls.Add(label3);
-            Controls.Add(label2);
-            Controls.Add(label1);
+            Controls.Add(ControlePagina);
             Name = "FrmCliente";
             Text = "FrmCliente";
             Load += FrmCliente_Load;
+            ControlePagina.ResumeLayout(false);
+            CadCleinte.ResumeLayout(false);
+            CadCleinte.PerformLayout();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
@@ -241,5 +280,8 @@
         private TextBox txtTelefone;
         private DateTimePicker dateTimePicker1;
         private Button btnCancelar;
+        private TabControl ControlePagina;
+        private TabPage CadCleinte;
+        private TabPage CadEndereco;
     }
 }
