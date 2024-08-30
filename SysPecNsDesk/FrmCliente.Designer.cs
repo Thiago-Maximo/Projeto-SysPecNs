@@ -296,6 +296,7 @@
             dgvClientes.Location = new Point(6, 226);
             dgvClientes.Name = "dgvClientes";
             dgvClientes.ReadOnly = true;
+            dgvClientes.RowHeadersVisible = false;
             dgvClientes.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvClientes.Size = new Size(641, 141);
             dgvClientes.TabIndex = 32;
@@ -579,7 +580,7 @@
             ID.HeaderText = "ID";
             ID.Name = "ID";
             ID.ReadOnly = true;
-            ID.Width = 50;
+            ID.Width = 80;
             // 
             // Nome
             // 

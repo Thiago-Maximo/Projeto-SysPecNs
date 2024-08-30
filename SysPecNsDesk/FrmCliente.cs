@@ -20,7 +20,7 @@ namespace SysPecNsDesk
 
         private void FrmCliente_Load(object sender, EventArgs e)
         {
-
+            CarregaGrid();
         }
 
         private void btnInserir_Click(object sender, EventArgs e)
