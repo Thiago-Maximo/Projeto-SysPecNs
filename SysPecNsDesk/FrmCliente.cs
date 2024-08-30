@@ -146,5 +146,83 @@ namespace SysPecNsDesk
                 cont++;
             }
         }
+
+        private void btnInserirEndereco_Click(object sender, EventArgs e)
+        {
+            Endereco endereco = new(
+                Convert.ToInt32(txtIDCliente.Text),
+                txtCep.Text,
+                txtLogradouro.Text,
+                txtNumeroEndereco.Text,
+                txtComplemento.Text,
+                txtBairro.Text,
+                txtCidade.Text,
+                txtUf.Text,
+                txtTipoEndereco.Text
+                );
+            endereco.Inserir();
+            if (endereco.Id > 0)
+            {
+                //txtId.Text = cliente.Id.ToString();
+                MessageBox.Show($"O Endereço foi gravado " +
+                    $"com sucesso, com o ID {endereco.Id}");
+                txtIDCliente.Clear();
+                txtCep.Clear();
+                txtLogradouro.Clear();
+                txtNumeroEndereco.Clear();
+                txtComplemento.Clear();
+                txtBairro.Clear();
+                txtCidade.Clear();
+                txtUf.Clear();
+                txtTipoEndereco.Clear();
+                txtIDCliente.Focus();
+                FrmCliente_Load(sender, e);
+            }
+            else
+            {
+                MessageBox.Show("Falha ao Grava Endereço!");
+            }
+        }
+
+        private void txtIDEndereco_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dgvClientes_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void txtBuscaCliente_TextChanged(object sender, EventArgs e)
+        {
+            if (txtBuscaCliente.Text.Length > 0)
+            {
+                CarregaGrid(txtBuscaCliente.Text);
+            }
+            else
+            {
+                CarregaGrid();
+            }
+        }
+        private void CarregaGrid(string? nome = "")
+        {
+            var lista = Cliente.ObterPorLista(nome);
+            dgvClientes.Rows.Clear();
+            int cont = 0;
+            foreach (var cliente in lista)
+            {
+                dgvClientes.Rows.Add();
+                dgvClientes.Rows[cont].Cells[0].Value = cliente.Id;
+                dgvClientes.Rows[cont].Cells[1].Value = cliente.Nome;
+                dgvClientes.Rows[cont].Cells[2].Value = cliente.Cpf;
+                dgvClientes.Rows[cont].Cells[3].Value = cliente.Telefone;
+                dgvClientes.Rows[cont].Cells[4].Value = cliente.Email;
+                dgvClientes.Rows[cont].Cells[5].Value = cliente.DataNasc;
+                dgvClientes.Rows[cont].Cells[6].Value = cliente.DataCad;
+                dgvClientes.Rows[cont].Cells[7].Value = cliente.Ativo;
+                cont++;
+            }
+        }
     }
 }
