@@ -224,5 +224,32 @@ namespace SysPecNsDesk
                 cont++;
             }
         }
+        private void CarregaGridEndereco(string? nome = "")
+        {
+            var lista = Cliente.ObterPorLista(nome);
+            dgvEnderecos.Rows.Clear();
+            int cont = 0;
+            foreach (var cliente in lista)
+            {
+                dgvEnderecos.Rows.Add();
+                dgvEnderecos.Rows[cont].Cells[0].Value = cliente.Id;
+                dgvEnderecos.Rows[cont].Cells[1].Value = cliente.Nome;
+                dgvEnderecos.Rows[cont].Cells[2].Value = cliente.Cpf;
+                dgvEnderecos.Rows[cont].Cells[3].Value = cliente.Telefone;
+                dgvEnderecos.Rows[cont].Cells[4].Value = cliente.Email;
+            }
+        }
+
+        private void txtBuscaEndereco_TextChanged(object sender, EventArgs e)
+        {
+            if (txtBuscaEndereco.Text.Length > 0)
+            {
+                CarregaGridEndereco(txtBuscaEndereco.Text);
+            }
+            else
+            {
+                CarregaGridEndereco();
+            }
+        }
     }
 }

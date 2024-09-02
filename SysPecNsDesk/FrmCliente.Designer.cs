@@ -49,13 +49,24 @@
             CadCleinte = new TabPage();
             txtBuscaCliente = new TextBox();
             dgvClientes = new DataGridView();
+            ID = new DataGridViewTextBoxColumn();
+            Nome = new DataGridViewTextBoxColumn();
+            CPF = new DataGridViewTextBoxColumn();
+            Telefone = new DataGridViewTextBoxColumn();
+            Email = new DataGridViewTextBoxColumn();
+            DataNasc = new DataGridViewTextBoxColumn();
+            DataCad = new DataGridViewTextBoxColumn();
+            Ativo = new DataGridViewTextBoxColumn();
             CadEndereco = new TabPage();
             btnCancelarEndereco = new Button();
             btnDeletarEndereco = new Button();
             txtBuscaEndereco = new TextBox();
             dgvEnderecos = new DataGridView();
-            IdEndereco = new DataGridViewTextBoxColumn();
             IdCliente = new DataGridViewTextBoxColumn();
+            NomeCliente = new DataGridViewTextBoxColumn();
+            CPFCliente = new DataGridViewTextBoxColumn();
+            TelefoneCliente = new DataGridViewTextBoxColumn();
+            EmailCliente = new DataGridViewTextBoxColumn();
             btnEditarEndereco = new Button();
             btnInserirEndereco = new Button();
             txtTipoEndereco = new TextBox();
@@ -78,14 +89,6 @@
             lblCep = new Label();
             lblClienteId = new Label();
             lblID = new Label();
-            ID = new DataGridViewTextBoxColumn();
-            Nome = new DataGridViewTextBoxColumn();
-            CPF = new DataGridViewTextBoxColumn();
-            Telefone = new DataGridViewTextBoxColumn();
-            Email = new DataGridViewTextBoxColumn();
-            DataNasc = new DataGridViewTextBoxColumn();
-            DataCad = new DataGridViewTextBoxColumn();
-            Ativo = new DataGridViewTextBoxColumn();
             ControlePagina.SuspendLayout();
             CadCleinte.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvClientes).BeginInit();
@@ -302,6 +305,68 @@
             dgvClientes.TabIndex = 32;
             dgvClientes.CellContentClick += dgvClientes_CellContentClick;
             // 
+            // ID
+            // 
+            ID.Frozen = true;
+            ID.HeaderText = "ID";
+            ID.Name = "ID";
+            ID.ReadOnly = true;
+            ID.Width = 80;
+            // 
+            // Nome
+            // 
+            Nome.Frozen = true;
+            Nome.HeaderText = "Nome";
+            Nome.Name = "Nome";
+            Nome.ReadOnly = true;
+            Nome.Width = 80;
+            // 
+            // CPF
+            // 
+            CPF.Frozen = true;
+            CPF.HeaderText = "CPF";
+            CPF.Name = "CPF";
+            CPF.ReadOnly = true;
+            CPF.Width = 70;
+            // 
+            // Telefone
+            // 
+            Telefone.Frozen = true;
+            Telefone.HeaderText = "Telefone";
+            Telefone.Name = "Telefone";
+            Telefone.ReadOnly = true;
+            Telefone.Width = 70;
+            // 
+            // Email
+            // 
+            Email.Frozen = true;
+            Email.HeaderText = "Email";
+            Email.Name = "Email";
+            Email.ReadOnly = true;
+            Email.Width = 80;
+            // 
+            // DataNasc
+            // 
+            DataNasc.Frozen = true;
+            DataNasc.HeaderText = "Data de Nascimento";
+            DataNasc.Name = "DataNasc";
+            DataNasc.ReadOnly = true;
+            // 
+            // DataCad
+            // 
+            DataCad.Frozen = true;
+            DataCad.HeaderText = "Data de Cadastro";
+            DataCad.Name = "DataCad";
+            DataCad.ReadOnly = true;
+            // 
+            // Ativo
+            // 
+            Ativo.Frozen = true;
+            Ativo.HeaderText = "Ativo";
+            Ativo.Name = "Ativo";
+            Ativo.ReadOnly = true;
+            Ativo.Width = 55;
+            // 
             // CadEndereco
             // 
             CadEndereco.BackColor = Color.Silver;
@@ -362,28 +427,23 @@
             // 
             txtBuscaEndereco.Location = new Point(12, 198);
             txtBuscaEndereco.Name = "txtBuscaEndereco";
-            txtBuscaEndereco.Size = new Size(341, 23);
+            txtBuscaEndereco.Size = new Size(535, 23);
             txtBuscaEndereco.TabIndex = 22;
+            txtBuscaEndereco.TextChanged += txtBuscaEndereco_TextChanged;
             // 
             // dgvEnderecos
             // 
             dgvEnderecos.AllowUserToAddRows = false;
             dgvEnderecos.AllowUserToDeleteRows = false;
             dgvEnderecos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvEnderecos.Columns.AddRange(new DataGridViewColumn[] { IdEndereco, IdCliente });
-            dgvEnderecos.Location = new Point(12, 227);
+            dgvEnderecos.Columns.AddRange(new DataGridViewColumn[] { IdCliente, NomeCliente, CPFCliente, TelefoneCliente, EmailCliente });
+            dgvEnderecos.Location = new Point(12, 224);
             dgvEnderecos.Name = "dgvEnderecos";
             dgvEnderecos.ReadOnly = true;
-            dgvEnderecos.Size = new Size(341, 143);
+            dgvEnderecos.RowHeadersVisible = false;
+            dgvEnderecos.Size = new Size(535, 143);
             dgvEnderecos.TabIndex = 21;
             dgvEnderecos.CellContentClick += dgvEnderecos_CellContentClick;
-            // 
-            // IdEndereco
-            // 
-            IdEndereco.Frozen = true;
-            IdEndereco.HeaderText = "ID";
-            IdEndereco.Name = "IdEndereco";
-            IdEndereco.ReadOnly = true;
             // 
             // IdCliente
             // 
@@ -391,6 +451,32 @@
             IdCliente.HeaderText = "ID Do Cliente";
             IdCliente.Name = "IdCliente";
             IdCliente.ReadOnly = true;
+            // 
+            // NomeCliente
+            // 
+            NomeCliente.HeaderText = "Nome";
+            NomeCliente.Name = "NomeCliente";
+            NomeCliente.ReadOnly = true;
+            // 
+            // CPFCliente
+            // 
+            CPFCliente.HeaderText = "CPF";
+            CPFCliente.Name = "CPFCliente";
+            CPFCliente.ReadOnly = true;
+            // 
+            // TelefoneCliente
+            // 
+            TelefoneCliente.HeaderText = "Telefone";
+            TelefoneCliente.Name = "TelefoneCliente";
+            TelefoneCliente.ReadOnly = true;
+            TelefoneCliente.Width = 120;
+            // 
+            // EmailCliente
+            // 
+            EmailCliente.HeaderText = "Email";
+            EmailCliente.Name = "EmailCliente";
+            EmailCliente.ReadOnly = true;
+            EmailCliente.Width = 112;
             // 
             // btnEditarEndereco
             // 
@@ -574,68 +660,6 @@
             lblID.TabIndex = 0;
             lblID.Text = "ID";
             // 
-            // ID
-            // 
-            ID.Frozen = true;
-            ID.HeaderText = "ID";
-            ID.Name = "ID";
-            ID.ReadOnly = true;
-            ID.Width = 80;
-            // 
-            // Nome
-            // 
-            Nome.Frozen = true;
-            Nome.HeaderText = "Nome";
-            Nome.Name = "Nome";
-            Nome.ReadOnly = true;
-            Nome.Width = 80;
-            // 
-            // CPF
-            // 
-            CPF.Frozen = true;
-            CPF.HeaderText = "CPF";
-            CPF.Name = "CPF";
-            CPF.ReadOnly = true;
-            CPF.Width = 70;
-            // 
-            // Telefone
-            // 
-            Telefone.Frozen = true;
-            Telefone.HeaderText = "Telefone";
-            Telefone.Name = "Telefone";
-            Telefone.ReadOnly = true;
-            Telefone.Width = 70;
-            // 
-            // Email
-            // 
-            Email.Frozen = true;
-            Email.HeaderText = "Email";
-            Email.Name = "Email";
-            Email.ReadOnly = true;
-            Email.Width = 80;
-            // 
-            // DataNasc
-            // 
-            DataNasc.Frozen = true;
-            DataNasc.HeaderText = "Data de Nascimento";
-            DataNasc.Name = "DataNasc";
-            DataNasc.ReadOnly = true;
-            // 
-            // DataCad
-            // 
-            DataCad.Frozen = true;
-            DataCad.HeaderText = "Data de Cadastro";
-            DataCad.Name = "DataCad";
-            DataCad.ReadOnly = true;
-            // 
-            // Ativo
-            // 
-            Ativo.Frozen = true;
-            Ativo.HeaderText = "Ativo";
-            Ativo.Name = "Ativo";
-            Ativo.ReadOnly = true;
-            Ativo.Width = 55;
-            // 
             // FrmCliente
             // 
             AcceptButton = btnCancelarEndereco;
@@ -705,8 +729,6 @@
         private Button btnEditarEndereco;
         private Button btnInserirEndereco;
         private Button btnCancelarEndereco;
-        private DataGridViewTextBoxColumn IdEndereco;
-        private DataGridViewTextBoxColumn IdCliente;
         private DataGridView dgvClientes;
         private TextBox txtBuscaCliente;
         private DataGridViewTextBoxColumn ID;
@@ -717,5 +739,10 @@
         private DataGridViewTextBoxColumn DataNasc;
         private DataGridViewTextBoxColumn DataCad;
         private DataGridViewTextBoxColumn Ativo;
+        private DataGridViewTextBoxColumn IdCliente;
+        private DataGridViewTextBoxColumn NomeCliente;
+        private DataGridViewTextBoxColumn CPFCliente;
+        private DataGridViewTextBoxColumn TelefoneCliente;
+        private DataGridViewTextBoxColumn EmailCliente;
     }
 }
