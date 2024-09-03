@@ -42,5 +42,17 @@ namespace SysPecNsDesk
             if (msg == DialogResult.Yes) Application.Exit();
 
         }
+
+        private void operaçãoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void novoToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            FrmProduto frmproduto = new();
+            frmproduto.MdiParent = this;
+            frmproduto.Show();
+        }
     }
 }

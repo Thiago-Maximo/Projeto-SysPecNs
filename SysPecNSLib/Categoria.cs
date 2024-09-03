@@ -9,13 +9,13 @@ namespace SysPecNSLib
 {
     public class Categoria
     {
-        public int Id { get; set; }
+        public int? Id { get; set; }
         public string? Nome { get; set; }
         public string? Sigla { get; set; }
 
 
 
-        public Categoria(int id, string? nome, string? sigla)
+        public Categoria(int? id, string? nome, string? sigla)
         {
             Id = id;
             Nome = nome;
@@ -29,6 +29,11 @@ namespace SysPecNSLib
         public Categoria()
         {
          
+        }
+        public Categoria(int? id, string? nome)
+        {
+            Id = id;
+            Nome = nome;
         }
         public void Inserir()
         {
@@ -48,20 +53,20 @@ namespace SysPecNSLib
             var dr = cmd.ExecuteReader();
             if (dr.Read())
             {
-                categoria =new(dr.GetInt32(0),dr.GetString(1),dr.GetString(2));
+                categoria =new(dr.GetInt32(0),dr.GetString(1),null);
             }
             return categoria;
         }
-        public static List<Categoria> ObterLista(int? Id)
+        public static  List<Categoria> ObterLista()
         {
             List<Categoria> categorias = new();
             var cmd = Banco.Abrir();
             cmd.CommandType = CommandType.Text;
-            cmd.CommandText = $"Select * from categorias where id = {Id}";
+            cmd.CommandText = $"Select * from categorias";
             var dr = cmd.ExecuteReader();
             while (dr.Read())
             {
-                categorias.Add(new(dr.GetInt32(0), dr.GetString(1), dr.GetString(2)));
+                categorias.Add(new(dr.GetInt32(0), dr.GetString(1)));
             }
             return categorias;
         }

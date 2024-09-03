@@ -192,6 +192,7 @@
             cmbNivel.Name = "cmbNivel";
             cmbNivel.Size = new Size(95, 23);
             cmbNivel.TabIndex = 10;
+            cmbNivel.SelectedIndexChanged += cmbNivel_SelectedIndexChanged;
             // 
             // chkAtivo
             // 

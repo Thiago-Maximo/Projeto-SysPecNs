@@ -120,5 +120,10 @@ namespace SysPecNsDesk
         {
 
         }
+
+        private void cmbNivel_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

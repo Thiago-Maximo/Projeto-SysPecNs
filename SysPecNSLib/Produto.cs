@@ -117,13 +117,13 @@ namespace SysPecNSLib
                     Categoria.ObterPorId(dr.GetInt32(5)),
                     dr.GetDouble(6),
                     dr.GetDouble(7),
-                    (byte?[])dr.GetValue(8),
+                    null,
                     dr.GetDateTime(9)
                     );
             }
             return produto;
         }
-        public static List<Produto> ObterPorlista(int Id)
+        public static List<Produto> ObterPorlista()
         {
            List<Produto> produtos = new();
             var cmd = Banco.Abrir();
@@ -140,7 +140,7 @@ namespace SysPecNSLib
                     Categoria.ObterPorId(dr.GetInt32(5)),
                     dr.GetDouble(6),
                     dr.GetDouble(7),
-                    (byte?[])dr.GetValue(8),
+                    null,
                     dr.GetDateTime(9)
                     ));
             }
