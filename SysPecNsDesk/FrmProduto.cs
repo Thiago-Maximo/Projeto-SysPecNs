@@ -19,7 +19,7 @@ namespace SysPecNsDesk
         }
         private void FrmProduto_Load(object sender, EventArgs e)
         {
-           // carregando o combox de niveis
+            // carregando o combox de niveis
             var categoria = Categoria.ObterLista();
             cmbCategoria.DataSource = categoria;
             cmbCategoria.DisplayMember = "Nome";
@@ -45,6 +45,25 @@ namespace SysPecNsDesk
                 dgvProdutos.Rows[cont].Cells[7].Value = produto.DataCad;
                 dgvProdutos.Rows[cont].Cells[8].Value = produto.descricao;
                 cont++;
+            }
+        }
+
+        private void btnAdicionar_Click(object sender, EventArgs e)
+        {
+            Produto produto = new(
+                txtCodBarras.Text,
+                txtDescricao.Text,
+                double.Parse(txtValorUnit.Text),
+                txtUnidadeVenda.Text,
+                Categoria.ObterPorId(Convert.ToInt32(cmbCategoria.SelectedValue)),
+                (int)nmrEstoque.Value,
+                double.Parse(txtDesconto.Text)
+                );
+            produto.Inserir();
+            if (produto.Id > 0)
+            {
+                MessageBox.Show($"O Produto {produto.descricao}, com o ID {produto.Id}");
+                FrmProduto_Load(sender, e);
             }
         }
     }

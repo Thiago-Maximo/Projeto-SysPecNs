@@ -50,7 +50,6 @@
             lblCodigoBarra = new Label();
             lblIdProduto = new Label();
             dgvProdutos = new DataGridView();
-            txtProdutos = new TextBox();
             clnID = new DataGridViewTextBoxColumn();
             clnCodbarras = new DataGridViewTextBoxColumn();
             clnValorUnit = new DataGridViewTextBoxColumn();
@@ -60,6 +59,7 @@
             clnDesconto = new DataGridViewTextBoxColumn();
             clnDataCad = new DataGridViewTextBoxColumn();
             clnDescricao = new DataGridViewTextBoxColumn();
+            txtProdutos = new TextBox();
             GpProdutos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)nmrEstoque).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvProdutos).BeginInit();
@@ -96,9 +96,9 @@
             // btnConsultar
             // 
             btnConsultar.Cursor = Cursors.Hand;
-            btnConsultar.Location = new Point(377, 166);
+            btnConsultar.Location = new Point(416, 155);
             btnConsultar.Name = "btnConsultar";
-            btnConsultar.Size = new Size(75, 23);
+            btnConsultar.Size = new Size(102, 42);
             btnConsultar.TabIndex = 18;
             btnConsultar.Text = "&Consultar";
             btnConsultar.UseVisualStyleBackColor = true;
@@ -106,9 +106,9 @@
             // btnEditar
             // 
             btnEditar.Cursor = Cursors.Hand;
-            btnEditar.Location = new Point(291, 166);
+            btnEditar.Location = new Point(307, 155);
             btnEditar.Name = "btnEditar";
-            btnEditar.Size = new Size(75, 23);
+            btnEditar.Size = new Size(102, 42);
             btnEditar.TabIndex = 17;
             btnEditar.Text = "&Editar";
             btnEditar.UseVisualStyleBackColor = true;
@@ -116,13 +116,16 @@
             // btnAdicionar
             // 
             btnAdicionar.Cursor = Cursors.Hand;
+            btnAdicionar.Image = Properties.Resources.Add;
             btnAdicionar.ImageAlign = ContentAlignment.MiddleLeft;
-            btnAdicionar.Location = new Point(202, 166);
+            btnAdicionar.Location = new Point(198, 155);
             btnAdicionar.Name = "btnAdicionar";
-            btnAdicionar.Size = new Size(78, 23);
+            btnAdicionar.Size = new Size(102, 42);
             btnAdicionar.TabIndex = 16;
             btnAdicionar.Text = "&Adicionar";
+            btnAdicionar.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnAdicionar.UseVisualStyleBackColor = true;
+            btnAdicionar.Click += btnAdicionar_Click;
             // 
             // txtDesconto
             // 
@@ -155,10 +158,13 @@
             // 
             // txtUnidadeVenda
             // 
+            txtUnidadeVenda.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtUnidadeVenda.ForeColor = Color.FromArgb(64, 64, 64);
             txtUnidadeVenda.Location = new Point(300, 76);
             txtUnidadeVenda.Name = "txtUnidadeVenda";
             txtUnidadeVenda.Size = new Size(104, 23);
             txtUnidadeVenda.TabIndex = 11;
+            txtUnidadeVenda.Text = "Ex: Pacote";
             // 
             // txtValorUnit
             // 
@@ -176,6 +182,7 @@
             // 
             // txtID
             // 
+            txtID.Enabled = false;
             txtID.Location = new Point(92, 32);
             txtID.Name = "txtID";
             txtID.Size = new Size(93, 23);
@@ -267,18 +274,6 @@
             dgvProdutos.Size = new Size(535, 149);
             dgvProdutos.TabIndex = 1;
             // 
-            // txtProdutos
-            // 
-            txtProdutos.BackColor = SystemColors.Control;
-            txtProdutos.BorderStyle = BorderStyle.None;
-            txtProdutos.Font = new Font("Snap ITC", 20.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtProdutos.Location = new Point(315, 12);
-            txtProdutos.Name = "txtProdutos";
-            txtProdutos.Size = new Size(161, 35);
-            txtProdutos.TabIndex = 2;
-            txtProdutos.Text = "Produtos";
-            txtProdutos.TextAlign = HorizontalAlignment.Center;
-            // 
             // clnID
             // 
             clnID.HeaderText = "ID";
@@ -341,6 +336,18 @@
             clnDescricao.Name = "clnDescricao";
             clnDescricao.ReadOnly = true;
             // 
+            // txtProdutos
+            // 
+            txtProdutos.BackColor = SystemColors.Control;
+            txtProdutos.BorderStyle = BorderStyle.None;
+            txtProdutos.Font = new Font("Snap ITC", 20.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtProdutos.Location = new Point(315, 12);
+            txtProdutos.Name = "txtProdutos";
+            txtProdutos.Size = new Size(161, 35);
+            txtProdutos.TabIndex = 2;
+            txtProdutos.Text = "Produtos";
+            txtProdutos.TextAlign = HorizontalAlignment.Center;
+            // 
             // FrmProduto
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -351,6 +358,7 @@
             Controls.Add(GpProdutos);
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "FrmProduto";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Produtos";
             Load += FrmProduto_Load;
             GpProdutos.ResumeLayout(false);
