@@ -17,6 +17,7 @@ namespace SysPecNSLib
         public string? Contato { get; set; }
         public string? Telefone { get; set; }
         public string? Email { get; set; }
+        public Fornecedor? Categoria { get; set; }
 
         //Métodos Construtores
         public Fornecedor(int? id, string? razao_Social, string? fantasia, string? cnpj, string? contato, string? telefone, string? email)
@@ -29,6 +30,17 @@ namespace SysPecNSLib
             Telefone = telefone;
             Email = email;
         }
+        public Fornecedor(int? id, string? razao_Social, string? fantasia, string? cnpj, string? contato, string? telefone, string? email,Fornecedor? categoria)
+        {
+            Id = id;
+            Razao_Social = razao_Social;
+            Fantasia = fantasia;
+            Cnpj = cnpj;
+            Contato = contato;
+            Telefone = telefone;
+            Email = email;
+            Categoria = categoria;
+        }
         public Fornecedor( string? razao_Social, string? fantasia, string? cnpj, string? contato, string? telefone, string? email)
         {
             Razao_Social = razao_Social;
@@ -38,9 +50,19 @@ namespace SysPecNSLib
             Telefone = telefone;
             Email = email;
         }
+        public Fornecedor(string? razao_Social, string? fantasia, string? cnpj, string? contato, string? telefone, string? email,Fornecedor? categoria)
+        {
+            Razao_Social = razao_Social;
+            Fantasia = fantasia;
+            Cnpj = cnpj;
+            Contato = contato;
+            Telefone = telefone;
+            Email = email;
+            Categoria = categoria;
+        }
         public Fornecedor()
         {
-          
+            
         }
 
         //Criando as Funcionalidades
@@ -76,18 +98,45 @@ namespace SysPecNSLib
             var cmd = Banco.Abrir();
             cmd.CommandText = $"Select * from fornecedores where id = {Id}";
             var dr = cmd.ExecuteReader();
-           /* while (dr.Read())
+            while (dr.Read())
             {
                 fornecedor = new(
                     dr.GetInt32(0),
                     dr.GetString(1),
+                    dr.GetString(2),
+                    dr.GetString(3),
+                    dr.GetString(4),
+                    dr.GetString(5),
+                    dr.GetString(6)
                     );
-            }*/
+            }
             return fornecedor;
         }
-        public static List<Fornecedor> ObterPorLista()
+        public static List<Fornecedor> ObterPorLista(string? Razao_Social)
         {
             List<Fornecedor> lista = new();
+            var cmd = Banco.Abrir();
+            if (Razao_Social == "")
+            {
+                cmd.CommandText = "Select * from fornecedores order by razao_social";
+            }
+            else
+            {
+                cmd.CommandText = $"Select * from fornecedores where razao_social like '%{Razao_Social}%' order by razao_social";
+            }
+            var dr = cmd.ExecuteReader();
+            while (dr.Read())
+            {
+                lista.Add(new(
+                    dr.GetInt32(0),
+                    dr.GetString(1),
+                    dr.GetString(2),
+                    dr.GetString(3),
+                    dr.GetString(4),
+                    dr.GetString(5),
+                    dr.GetString(6)
+                    ));
+            }
             return lista;
         }
 
