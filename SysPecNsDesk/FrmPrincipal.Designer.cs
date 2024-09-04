@@ -43,6 +43,7 @@
             pedidosToolStripMenuItem = new ToolStripMenuItem();
             operaçãoToolStripMenuItem = new ToolStripMenuItem();
             sairToolStripMenuItem = new ToolStripMenuItem();
+            fornecedoresToolStripMenuItem = new ToolStripMenuItem();
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
@@ -75,7 +76,7 @@
             // 
             // produtosToolStripMenuItem
             // 
-            produtosToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { novoToolStripMenuItem1, listarToolStripMenuItem });
+            produtosToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { novoToolStripMenuItem1, listarToolStripMenuItem, fornecedoresToolStripMenuItem });
             produtosToolStripMenuItem.Name = "produtosToolStripMenuItem";
             produtosToolStripMenuItem.Size = new Size(180, 22);
             produtosToolStripMenuItem.Text = "&Produtos";
@@ -126,7 +127,7 @@
             // pedidosToolStripMenuItem
             // 
             pedidosToolStripMenuItem.Name = "pedidosToolStripMenuItem";
-            pedidosToolStripMenuItem.Size = new Size(180, 22);
+            pedidosToolStripMenuItem.Size = new Size(116, 22);
             pedidosToolStripMenuItem.Text = "&Pedidos";
             // 
             // operaçãoToolStripMenuItem
@@ -142,6 +143,12 @@
             sairToolStripMenuItem.Size = new Size(38, 20);
             sairToolStripMenuItem.Text = "&Sair";
             sairToolStripMenuItem.Click += sairToolStripMenuItem_Click;
+            // 
+            // fornecedoresToolStripMenuItem
+            // 
+            fornecedoresToolStripMenuItem.Name = "fornecedoresToolStripMenuItem";
+            fornecedoresToolStripMenuItem.Size = new Size(180, 22);
+            fornecedoresToolStripMenuItem.Text = "Fornecedores";
             // 
             // FrmPrincipal
             // 
@@ -177,5 +184,6 @@
         private ToolStripMenuItem pedidosToolStripMenuItem;
         private ToolStripMenuItem operaçãoToolStripMenuItem;
         private ToolStripMenuItem sairToolStripMenuItem;
+        private ToolStripMenuItem fornecedoresToolStripMenuItem;
     }
 }

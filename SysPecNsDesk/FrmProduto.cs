@@ -66,5 +66,63 @@ namespace SysPecNsDesk
                 FrmProduto_Load(sender, e);
             }
         }
+
+        private void btnConsultar_Click(object sender, EventArgs e)
+        {
+            if (btnConsultar.Text == "&Consultar")
+            {
+                txtCodBarras.Clear();
+                txtValorUnit.Clear();
+                txtUnidadeVenda.Clear();
+                txtDesconto.Clear();
+                txtDescricao.Clear();
+                nmrEstoque.Value = 0;
+                btnConsultar.Text = "&Obter Por ID";
+                txtID.Focus();
+                txtID.ReadOnly = false;
+            }
+            else if (txtID.Text.Length > 0)
+            {
+                Produto produto = Produto.ObterPorId(int.Parse(txtID.Text));
+                txtCodBarras.Text = produto.CodBar;
+                txtValorUnit.Text = Convert.ToString(produto.ValorUnit);
+                txtDescricao.Text = produto.descricao;
+                txtDesconto.Text = produto.ClasseDesconto.ToString();
+                txtUnidadeVenda.Text = produto.UnidadeVenda;
+                //nmrEstoque.Value = produto.estoqueMinimo;
+                cmbCategoria.SelectedIndex = cmbCategoria.FindString(produto.Categoria.Nome);
+                btnEditar.Enabled = true;
+            }
+        }
+        private void LimpaControles() 
+        {
+            txtID.Clear();
+            txtCodBarras.Clear();
+            txtValorUnit.Clear();
+            txtUnidadeVenda.Clear();
+            txtDesconto.Clear();
+            txtDescricao.Clear();
+            nmrEstoque.Value = 0;
+            txtCodBarras.Focus();
+        }
+        private void btnEditar_Click(object sender, EventArgs e)
+        {
+            Produto produto = new(int.Parse(txtID.Text),
+                txtCodBarras.Text,
+                txtDescricao.Text,
+                double.Parse(txtValorUnit.Text),
+                txtUnidadeVenda.Text,
+                Categoria.ObterPorId(Convert.ToInt32(cmbCategoria.SelectedValue)),
+                (double)nmrEstoque.Value,
+                double.Parse(txtDesconto.Text)
+                );
+            produto.Atualizar();
+            MessageBox.Show($"Produto {produto.Id} - {produto.descricao} foi Atualizado com Sucesso!!!");
+            btnEditar.Enabled = false;
+            txtID.ReadOnly = true;
+            btnConsultar.Text = "&Consultar";
+            LimpaControles();
+            FrmProduto_Load(sender, e);
+        }
     }
 }

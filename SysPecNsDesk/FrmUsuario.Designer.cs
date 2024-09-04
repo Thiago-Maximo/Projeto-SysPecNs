@@ -237,6 +237,7 @@
             btnEditar.TabIndex = 15;
             btnEditar.Text = "&Editar";
             btnEditar.UseVisualStyleBackColor = true;
+            btnEditar.Click += btnEditar_Click;
             // 
             // btnDeletar
             // 

@@ -99,19 +99,22 @@
             btnConsultar.Location = new Point(416, 155);
             btnConsultar.Name = "btnConsultar";
             btnConsultar.Size = new Size(102, 42);
-            btnConsultar.TabIndex = 18;
+            btnConsultar.TabIndex = 10;
             btnConsultar.Text = "&Consultar";
             btnConsultar.UseVisualStyleBackColor = true;
+            btnConsultar.Click += btnConsultar_Click;
             // 
             // btnEditar
             // 
             btnEditar.Cursor = Cursors.Hand;
+            btnEditar.Enabled = false;
             btnEditar.Location = new Point(307, 155);
             btnEditar.Name = "btnEditar";
             btnEditar.Size = new Size(102, 42);
-            btnEditar.TabIndex = 17;
+            btnEditar.TabIndex = 9;
             btnEditar.Text = "&Editar";
             btnEditar.UseVisualStyleBackColor = true;
+            btnEditar.Click += btnEditar_Click;
             // 
             // btnAdicionar
             // 
@@ -121,7 +124,7 @@
             btnAdicionar.Location = new Point(198, 155);
             btnAdicionar.Name = "btnAdicionar";
             btnAdicionar.Size = new Size(102, 42);
-            btnAdicionar.TabIndex = 16;
+            btnAdicionar.TabIndex = 8;
             btnAdicionar.Text = "&Adicionar";
             btnAdicionar.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnAdicionar.UseVisualStyleBackColor = true;
@@ -132,29 +135,30 @@
             txtDesconto.Location = new Point(92, 166);
             txtDesconto.Name = "txtDesconto";
             txtDesconto.Size = new Size(100, 23);
-            txtDesconto.TabIndex = 15;
+            txtDesconto.TabIndex = 7;
             // 
             // cmbCategoria
             // 
+            cmbCategoria.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbCategoria.FormattingEnabled = true;
             cmbCategoria.Location = new Point(302, 122);
             cmbCategoria.Name = "cmbCategoria";
             cmbCategoria.Size = new Size(208, 23);
-            cmbCategoria.TabIndex = 14;
+            cmbCategoria.TabIndex = 6;
             // 
             // txtDescricao
             // 
             txtDescricao.Location = new Point(92, 122);
             txtDescricao.Name = "txtDescricao";
             txtDescricao.Size = new Size(199, 23);
-            txtDescricao.TabIndex = 13;
+            txtDescricao.TabIndex = 5;
             // 
             // nmrEstoque
             // 
             nmrEstoque.Location = new Point(415, 76);
             nmrEstoque.Name = "nmrEstoque";
             nmrEstoque.Size = new Size(93, 23);
-            nmrEstoque.TabIndex = 12;
+            nmrEstoque.TabIndex = 4;
             // 
             // txtUnidadeVenda
             // 
@@ -163,7 +167,7 @@
             txtUnidadeVenda.Location = new Point(300, 76);
             txtUnidadeVenda.Name = "txtUnidadeVenda";
             txtUnidadeVenda.Size = new Size(104, 23);
-            txtUnidadeVenda.TabIndex = 11;
+            txtUnidadeVenda.TabIndex = 3;
             txtUnidadeVenda.Text = "Ex: Pacote";
             // 
             // txtValorUnit
@@ -171,22 +175,22 @@
             txtValorUnit.Location = new Point(196, 76);
             txtValorUnit.Name = "txtValorUnit";
             txtValorUnit.Size = new Size(93, 23);
-            txtValorUnit.TabIndex = 10;
+            txtValorUnit.TabIndex = 2;
             // 
             // txtCodBarras
             // 
             txtCodBarras.Location = new Point(92, 76);
             txtCodBarras.Name = "txtCodBarras";
             txtCodBarras.Size = new Size(93, 23);
-            txtCodBarras.TabIndex = 9;
+            txtCodBarras.TabIndex = 1;
             // 
             // txtID
             // 
-            txtID.Enabled = false;
             txtID.Location = new Point(92, 32);
             txtID.Name = "txtID";
+            txtID.ReadOnly = true;
             txtID.Size = new Size(93, 23);
-            txtID.TabIndex = 8;
+            txtID.TabIndex = 0;
             // 
             // lblDesconto
             // 
@@ -194,7 +198,7 @@
             lblDesconto.Location = new Point(92, 148);
             lblDesconto.Name = "lblDesconto";
             lblDesconto.Size = new Size(57, 15);
-            lblDesconto.TabIndex = 7;
+            lblDesconto.TabIndex = 18;
             lblDesconto.Text = "Desconto";
             // 
             // lblCategoriaProduto
@@ -203,7 +207,7 @@
             lblCategoriaProduto.Location = new Point(299, 104);
             lblCategoriaProduto.Name = "lblCategoriaProduto";
             lblCategoriaProduto.Size = new Size(58, 15);
-            lblCategoriaProduto.TabIndex = 6;
+            lblCategoriaProduto.TabIndex = 17;
             lblCategoriaProduto.Text = "Categoria";
             // 
             // lblDescricaoProduto
@@ -212,7 +216,7 @@
             lblDescricaoProduto.Location = new Point(91, 104);
             lblDescricaoProduto.Name = "lblDescricaoProduto";
             lblDescricaoProduto.Size = new Size(58, 15);
-            lblDescricaoProduto.TabIndex = 5;
+            lblDescricaoProduto.TabIndex = 16;
             lblDescricaoProduto.Text = "Descrição";
             // 
             // lblEstoque
@@ -221,7 +225,7 @@
             lblEstoque.Location = new Point(416, 58);
             lblEstoque.Name = "lblEstoque";
             lblEstoque.Size = new Size(94, 15);
-            lblEstoque.TabIndex = 4;
+            lblEstoque.TabIndex = 15;
             lblEstoque.Text = "Estoque Mínimo";
             // 
             // lblUnidadeVenda
@@ -230,7 +234,7 @@
             lblUnidadeVenda.Location = new Point(297, 58);
             lblUnidadeVenda.Name = "lblUnidadeVenda";
             lblUnidadeVenda.Size = new Size(102, 15);
-            lblUnidadeVenda.TabIndex = 3;
+            lblUnidadeVenda.TabIndex = 14;
             lblUnidadeVenda.Text = "Unidade de Venda";
             // 
             // lblValorUnitario
@@ -239,7 +243,7 @@
             lblValorUnitario.Location = new Point(202, 58);
             lblValorUnitario.Name = "lblValorUnitario";
             lblValorUnitario.Size = new Size(78, 15);
-            lblValorUnitario.TabIndex = 2;
+            lblValorUnitario.TabIndex = 13;
             lblValorUnitario.Text = "Valor Unitário";
             // 
             // lblCodigoBarra
@@ -248,7 +252,7 @@
             lblCodigoBarra.Location = new Point(88, 58);
             lblCodigoBarra.Name = "lblCodigoBarra";
             lblCodigoBarra.Size = new Size(97, 15);
-            lblCodigoBarra.TabIndex = 1;
+            lblCodigoBarra.TabIndex = 12;
             lblCodigoBarra.Text = "Código de Barras";
             // 
             // lblIdProduto
@@ -257,7 +261,7 @@
             lblIdProduto.Location = new Point(89, 14);
             lblIdProduto.Name = "lblIdProduto";
             lblIdProduto.Size = new Size(18, 15);
-            lblIdProduto.TabIndex = 0;
+            lblIdProduto.TabIndex = 1;
             lblIdProduto.Text = "ID";
             // 
             // dgvProdutos

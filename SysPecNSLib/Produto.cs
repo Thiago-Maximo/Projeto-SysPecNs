@@ -19,9 +19,9 @@ namespace SysPecNSLib
        public double estoqueMinimo { get; set; }
        public double ClasseDesconto { get; set; }
        public byte?[] Imagem { get; set; }
-       public DateTime DataCad { get; set; }
+       public DateTime? DataCad { get; set; }
 
-        public Produto(int id, string? codBar, string? descricao, double valorUnit, string? unidadeVenda, Categoria? categoria, double estoqueMinimo, double classeDesconto, byte?[] imagem, DateTime dataCad)
+        public Produto(int id, string? codBar, string? descricao, double valorUnit, string? unidadeVenda, Categoria? categoria, double estoqueMinimo, double classeDesconto, byte?[] imagem = null, DateTime? dataCad = null)
         {
             Id = id;
             CodBar = codBar;
