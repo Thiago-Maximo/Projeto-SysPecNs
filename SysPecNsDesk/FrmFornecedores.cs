@@ -20,8 +20,12 @@ namespace SysPecNsDesk
             txtRazaoSocial.Focus();
         }
 
+        //Inserção,Alteração e Consulta de Fornecedores, 
+
         private void btnAdicionar_Click(object sender, EventArgs e)
         {
+            //Inserindo Fornecedores
+
             Fornecedor fornecedor = new(
                 txtRazaoSocial.Text,
                 txtNomeFantasia.Text,
@@ -43,7 +47,6 @@ namespace SysPecNsDesk
                 txtEmailFornecedor.Clear();
                 txtRazaoSocial.Focus();
                 FrmFornecedores_Load(sender, e);
-
             }
             else
             {
@@ -52,24 +55,15 @@ namespace SysPecNsDesk
             }
 
         }
-
-        private void CadFornecedores_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void FrmFornecedores_Load(object sender, EventArgs e)
         {
+            //Quando o Formulário estiver sendo carregado ele irá fazer
             CarregaGrid();
-
-            //carregando o combox de categoria
-            var fornecedor = Categoria.ObterLista();
-            cmbCategoriaFornecedor.DataSource = fornecedor;
-            cmbCategoriaFornecedor.DisplayMember = "Nome";
-            cmbCategoriaFornecedor.ValueMember = "Id";
         }
         private void CarregaGrid(string Razao_Social = "")
         {
+            //dataGrid de exibição no cadastro de fornecedores
+
             var lista = Fornecedor.ObterPorLista(Razao_Social);
             dgvFornecedor.Rows.Clear();
             int cont = 0;
@@ -89,6 +83,8 @@ namespace SysPecNsDesk
 
         private void txtBuscaFornecedor_TextChanged(object sender, EventArgs e)
         {
+            //buscar por nome o fornecedor, na aba de inserção de fornecedores
+
             if (txtBuscaFornecedor.Text.Length > 0)
             {
                 CarregaGrid(txtBuscaFornecedor.Text);
@@ -102,6 +98,8 @@ namespace SysPecNsDesk
 
         private void btnConsultar_Click(object sender, EventArgs e)
         {
+            //Botão de consultar (Pesquisar para poder editar os dados)
+
             if (btnConsultar.Text == "&Consultar")
             {
                 txtRazaoSocial.Clear();
@@ -129,6 +127,8 @@ namespace SysPecNsDesk
 
         private void btnEditar_Click(object sender, EventArgs e)
         {
+            //Botão de editar os dados do fornecedor
+
             Fornecedor fornecedor = new(int.Parse(txtIDFornecedor.Text),
                 txtRazaoSocial.Text,
                 txtNomeFantasia.Text,
@@ -147,13 +147,61 @@ namespace SysPecNsDesk
         }
         private void LimpaControles()
         {
+            //limpando todos os campos do formulario de inserção de fornecedores
+
             txtIDFornecedor.Clear();
-                txtRazaoSocial.Clear();
-                txtNomeFantasia.Clear();
-                txtCnpj.Clear();
-                txtContatoFornecedor.Clear();
-                txtTelefoneFornecedor.Clear();
-                txtEmailFornecedor.Clear();
+            txtRazaoSocial.Clear();
+            txtNomeFantasia.Clear();
+            txtCnpj.Clear();
+            txtContatoFornecedor.Clear();
+            txtTelefoneFornecedor.Clear();
+            txtEmailFornecedor.Clear();
+        }
+
+
+
+        //Exibição da Lista de Fornecedores e com os produtos que eles fornecem 
+
+
+        private void txtBuscafornecedorLista_TextChanged(object sender, EventArgs e)
+        {
+            if (txtBuscafornecedorLista.Text.Length > 0)
+            {
+                CarregaGridBuscaFornecedor(txtBuscafornecedorLista.Text);
+
+            }
+            else
+            {
+                CarregaGridBuscaFornecedor();
+            }
+        }
+        private void CarregaGridBuscaFornecedor(string Razao_Social = "")
+        {
+            var lista = Fornecedor.ObterPorLista(Razao_Social);
+            dgvFornecedor.Rows.Clear();
+            int cont = 0;
+            foreach (var fornecedor in lista)
+            {
+                dgvBuscaFornecedor.Rows.Add();
+                dgvBuscaFornecedor.Rows[cont].Cells[0].Value = fornecedor.Id;
+                dgvBuscaFornecedor.Rows[cont].Cells[1].Value = fornecedor.Razao_Social;
+                dgvBuscaFornecedor.Rows[cont].Cells[2].Value = fornecedor.Fantasia;
+                dgvBuscaFornecedor.Rows[cont].Cells[3].Value = fornecedor.Cnpj;
+                dgvBuscaFornecedor.Rows[cont].Cells[4].Value = fornecedor.Contato;
+                dgvBuscaFornecedor.Rows[cont].Cells[5].Value = fornecedor.Telefone;
+                dgvBuscaFornecedor.Rows[cont].Cells[6].Value = fornecedor.Email;
+                cont++;
+            }
+        }
+        private void TabCtFornecedores_Selecting(object sender, TabControlCancelEventArgs e)
+        {
+            CarregaGridBuscaFornecedor();
+        }
+
+        private void dgvBuscaProdutoFornecedor_SelectionChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            //int teste = Convert.ToInt32(dgvBuscaProdutoFornecedor.Rows[dgvBuscaProdutoFornecedor.CurrentRow.Index].Cells[0]);
+            //CarregaGridBuscaFornecedor(teste);
         }
     }
 }

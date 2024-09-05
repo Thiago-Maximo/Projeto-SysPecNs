@@ -59,20 +59,45 @@
             lblRazaoSocial = new Label();
             lblIDFornecedor = new Label();
             ListaFornecedores = new TabPage();
+            dgvBuscaProdutoFornecedor = new DataGridView();
+            dgvIDBuscaProdutoFornecedor = new DataGridViewTextBoxColumn();
+            dgvCorBarraBuscaProdutoFornecedor = new DataGridViewTextBoxColumn();
+            dgvDescricaoBuscaProdutoFornecedor = new DataGridViewTextBoxColumn();
+            dgvValorUnitBuscaProdutoFornecedor = new DataGridViewTextBoxColumn();
+            dgvUnidadeVendaBuscaProdutoFornecedor = new DataGridViewTextBoxColumn();
+            dgvCategoriaBuscaProdutoFornecedor = new DataGridViewTextBoxColumn();
+            dgvEstoqueMinimoBuscaProdutoFornecedor = new DataGridViewTextBoxColumn();
+            dgvClasseDescontoBuscaProdutoFornecedor = new DataGridViewTextBoxColumn();
+            dgvDataCadBuscaProdutoFornecedor = new DataGridViewTextBoxColumn();
+            dgvBuscaFornecedor = new DataGridView();
+            clnIDBuscaFornecedor = new DataGridViewTextBoxColumn();
+            clnRazaoSocialBuscaFornecedor = new DataGridViewTextBoxColumn();
+            clnFantasiaBuscaFornecedor = new DataGridViewTextBoxColumn();
+            clnCNPJBuscaFornecedor = new DataGridViewTextBoxColumn();
+            clnContatoBuscaFornecedor = new DataGridViewTextBoxColumn();
+            clnTelefoneBuscaFornecedor = new DataGridViewTextBoxColumn();
+            clnEmailBuscaFornecedor = new DataGridViewTextBoxColumn();
+            lblBuscaFornecedor = new Label();
+            txtBuscafornecedorLista = new TextBox();
+            txtFornecedores = new TextBox();
             TabCtFornecedores.SuspendLayout();
             CadFornecedores.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvFornecedor).BeginInit();
+            ListaFornecedores.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvBuscaProdutoFornecedor).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvBuscaFornecedor).BeginInit();
             SuspendLayout();
             // 
             // TabCtFornecedores
             // 
             TabCtFornecedores.Controls.Add(CadFornecedores);
             TabCtFornecedores.Controls.Add(ListaFornecedores);
-            TabCtFornecedores.Location = new Point(88, 42);
+            TabCtFornecedores.Location = new Point(96, 52);
             TabCtFornecedores.Name = "TabCtFornecedores";
             TabCtFornecedores.SelectedIndex = 0;
             TabCtFornecedores.Size = new Size(574, 386);
             TabCtFornecedores.TabIndex = 0;
+            TabCtFornecedores.Selecting += TabCtFornecedores_Selecting;
             // 
             // CadFornecedores
             // 
@@ -104,7 +129,6 @@
             CadFornecedores.TabIndex = 0;
             CadFornecedores.Text = "Cadastro de Fornecedores";
             CadFornecedores.UseVisualStyleBackColor = true;
-            CadFornecedores.Click += CadFornecedores_Click;
             // 
             // txtBuscaFornecedor
             // 
@@ -124,6 +148,7 @@
             dgvFornecedor.Name = "dgvFornecedor";
             dgvFornecedor.ReadOnly = true;
             dgvFornecedor.RowHeadersVisible = false;
+            dgvFornecedor.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvFornecedor.Size = new Size(456, 140);
             dgvFornecedor.TabIndex = 19;
             // 
@@ -341,6 +366,10 @@
             // 
             // ListaFornecedores
             // 
+            ListaFornecedores.Controls.Add(dgvBuscaProdutoFornecedor);
+            ListaFornecedores.Controls.Add(dgvBuscaFornecedor);
+            ListaFornecedores.Controls.Add(lblBuscaFornecedor);
+            ListaFornecedores.Controls.Add(txtBuscafornecedorLista);
             ListaFornecedores.Location = new Point(4, 24);
             ListaFornecedores.Name = "ListaFornecedores";
             ListaFornecedores.Padding = new Padding(3);
@@ -349,11 +378,172 @@
             ListaFornecedores.Text = "Lista de Fornecedores";
             ListaFornecedores.UseVisualStyleBackColor = true;
             // 
+            // dgvBuscaProdutoFornecedor
+            // 
+            dgvBuscaProdutoFornecedor.AllowUserToAddRows = false;
+            dgvBuscaProdutoFornecedor.AllowUserToDeleteRows = false;
+            dgvBuscaProdutoFornecedor.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvBuscaProdutoFornecedor.Columns.AddRange(new DataGridViewColumn[] { dgvIDBuscaProdutoFornecedor, dgvCorBarraBuscaProdutoFornecedor, dgvDescricaoBuscaProdutoFornecedor, dgvValorUnitBuscaProdutoFornecedor, dgvUnidadeVendaBuscaProdutoFornecedor, dgvCategoriaBuscaProdutoFornecedor, dgvEstoqueMinimoBuscaProdutoFornecedor, dgvClasseDescontoBuscaProdutoFornecedor, dgvDataCadBuscaProdutoFornecedor });
+            dgvBuscaProdutoFornecedor.Location = new Point(17, 202);
+            dgvBuscaProdutoFornecedor.Name = "dgvBuscaProdutoFornecedor";
+            dgvBuscaProdutoFornecedor.ReadOnly = true;
+            dgvBuscaProdutoFornecedor.RowHeadersVisible = false;
+            dgvBuscaProdutoFornecedor.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvBuscaProdutoFornecedor.Size = new Size(525, 150);
+            dgvBuscaProdutoFornecedor.TabIndex = 3;
+            // 
+            // dgvIDBuscaProdutoFornecedor
+            // 
+            dgvIDBuscaProdutoFornecedor.HeaderText = "ID";
+            dgvIDBuscaProdutoFornecedor.Name = "dgvIDBuscaProdutoFornecedor";
+            dgvIDBuscaProdutoFornecedor.ReadOnly = true;
+            dgvIDBuscaProdutoFornecedor.Width = 60;
+            // 
+            // dgvCorBarraBuscaProdutoFornecedor
+            // 
+            dgvCorBarraBuscaProdutoFornecedor.HeaderText = "Código de Barra";
+            dgvCorBarraBuscaProdutoFornecedor.Name = "dgvCorBarraBuscaProdutoFornecedor";
+            dgvCorBarraBuscaProdutoFornecedor.ReadOnly = true;
+            dgvCorBarraBuscaProdutoFornecedor.Width = 120;
+            // 
+            // dgvDescricaoBuscaProdutoFornecedor
+            // 
+            dgvDescricaoBuscaProdutoFornecedor.HeaderText = "Descrição";
+            dgvDescricaoBuscaProdutoFornecedor.Name = "dgvDescricaoBuscaProdutoFornecedor";
+            dgvDescricaoBuscaProdutoFornecedor.ReadOnly = true;
+            // 
+            // dgvValorUnitBuscaProdutoFornecedor
+            // 
+            dgvValorUnitBuscaProdutoFornecedor.HeaderText = "Valor Unitário";
+            dgvValorUnitBuscaProdutoFornecedor.Name = "dgvValorUnitBuscaProdutoFornecedor";
+            dgvValorUnitBuscaProdutoFornecedor.ReadOnly = true;
+            dgvValorUnitBuscaProdutoFornecedor.Width = 110;
+            // 
+            // dgvUnidadeVendaBuscaProdutoFornecedor
+            // 
+            dgvUnidadeVendaBuscaProdutoFornecedor.HeaderText = "Unidade de Venda";
+            dgvUnidadeVendaBuscaProdutoFornecedor.Name = "dgvUnidadeVendaBuscaProdutoFornecedor";
+            dgvUnidadeVendaBuscaProdutoFornecedor.ReadOnly = true;
+            dgvUnidadeVendaBuscaProdutoFornecedor.Width = 130;
+            // 
+            // dgvCategoriaBuscaProdutoFornecedor
+            // 
+            dgvCategoriaBuscaProdutoFornecedor.HeaderText = "Categoria";
+            dgvCategoriaBuscaProdutoFornecedor.Name = "dgvCategoriaBuscaProdutoFornecedor";
+            dgvCategoriaBuscaProdutoFornecedor.ReadOnly = true;
+            // 
+            // dgvEstoqueMinimoBuscaProdutoFornecedor
+            // 
+            dgvEstoqueMinimoBuscaProdutoFornecedor.HeaderText = "Estoque Minimo";
+            dgvEstoqueMinimoBuscaProdutoFornecedor.Name = "dgvEstoqueMinimoBuscaProdutoFornecedor";
+            dgvEstoqueMinimoBuscaProdutoFornecedor.ReadOnly = true;
+            dgvEstoqueMinimoBuscaProdutoFornecedor.Width = 128;
+            // 
+            // dgvClasseDescontoBuscaProdutoFornecedor
+            // 
+            dgvClasseDescontoBuscaProdutoFornecedor.HeaderText = "Desconto";
+            dgvClasseDescontoBuscaProdutoFornecedor.Name = "dgvClasseDescontoBuscaProdutoFornecedor";
+            dgvClasseDescontoBuscaProdutoFornecedor.ReadOnly = true;
+            // 
+            // dgvDataCadBuscaProdutoFornecedor
+            // 
+            dgvDataCadBuscaProdutoFornecedor.HeaderText = "Data de Cadastro";
+            dgvDataCadBuscaProdutoFornecedor.Name = "dgvDataCadBuscaProdutoFornecedor";
+            dgvDataCadBuscaProdutoFornecedor.ReadOnly = true;
+            dgvDataCadBuscaProdutoFornecedor.Width = 130;
+            // 
+            // dgvBuscaFornecedor
+            // 
+            dgvBuscaFornecedor.AllowUserToAddRows = false;
+            dgvBuscaFornecedor.AllowUserToDeleteRows = false;
+            dgvBuscaFornecedor.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvBuscaFornecedor.Columns.AddRange(new DataGridViewColumn[] { clnIDBuscaFornecedor, clnRazaoSocialBuscaFornecedor, clnFantasiaBuscaFornecedor, clnCNPJBuscaFornecedor, clnContatoBuscaFornecedor, clnTelefoneBuscaFornecedor, clnEmailBuscaFornecedor });
+            dgvBuscaFornecedor.Location = new Point(17, 41);
+            dgvBuscaFornecedor.Name = "dgvBuscaFornecedor";
+            dgvBuscaFornecedor.ReadOnly = true;
+            dgvBuscaFornecedor.RowHeadersVisible = false;
+            dgvBuscaFornecedor.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvBuscaFornecedor.Size = new Size(525, 135);
+            dgvBuscaFornecedor.TabIndex = 2;
+            // 
+            // clnIDBuscaFornecedor
+            // 
+            clnIDBuscaFornecedor.HeaderText = "ID";
+            clnIDBuscaFornecedor.Name = "clnIDBuscaFornecedor";
+            clnIDBuscaFornecedor.ReadOnly = true;
+            clnIDBuscaFornecedor.Width = 50;
+            // 
+            // clnRazaoSocialBuscaFornecedor
+            // 
+            clnRazaoSocialBuscaFornecedor.HeaderText = "Razão Social";
+            clnRazaoSocialBuscaFornecedor.Name = "clnRazaoSocialBuscaFornecedor";
+            clnRazaoSocialBuscaFornecedor.ReadOnly = true;
+            // 
+            // clnFantasiaBuscaFornecedor
+            // 
+            clnFantasiaBuscaFornecedor.HeaderText = "Nome Fantasia";
+            clnFantasiaBuscaFornecedor.Name = "clnFantasiaBuscaFornecedor";
+            clnFantasiaBuscaFornecedor.ReadOnly = true;
+            clnFantasiaBuscaFornecedor.Width = 120;
+            // 
+            // clnCNPJBuscaFornecedor
+            // 
+            clnCNPJBuscaFornecedor.HeaderText = "CNPJ";
+            clnCNPJBuscaFornecedor.Name = "clnCNPJBuscaFornecedor";
+            clnCNPJBuscaFornecedor.ReadOnly = true;
+            clnCNPJBuscaFornecedor.Width = 80;
+            // 
+            // clnContatoBuscaFornecedor
+            // 
+            clnContatoBuscaFornecedor.HeaderText = "Contato";
+            clnContatoBuscaFornecedor.Name = "clnContatoBuscaFornecedor";
+            clnContatoBuscaFornecedor.ReadOnly = true;
+            // 
+            // clnTelefoneBuscaFornecedor
+            // 
+            clnTelefoneBuscaFornecedor.HeaderText = "Telefone";
+            clnTelefoneBuscaFornecedor.Name = "clnTelefoneBuscaFornecedor";
+            clnTelefoneBuscaFornecedor.ReadOnly = true;
+            // 
+            // clnEmailBuscaFornecedor
+            // 
+            clnEmailBuscaFornecedor.HeaderText = "Email";
+            clnEmailBuscaFornecedor.Name = "clnEmailBuscaFornecedor";
+            clnEmailBuscaFornecedor.ReadOnly = true;
+            // 
+            // lblBuscaFornecedor
+            // 
+            lblBuscaFornecedor.AutoSize = true;
+            lblBuscaFornecedor.Location = new Point(17, 3);
+            lblBuscaFornecedor.Name = "lblBuscaFornecedor";
+            lblBuscaFornecedor.Size = new Size(111, 15);
+            lblBuscaFornecedor.TabIndex = 1;
+            lblBuscaFornecedor.Text = "Buscar Fornecedor :";
+            // 
+            // txtBuscafornecedorLista
+            // 
+            txtBuscafornecedorLista.Location = new Point(134, 3);
+            txtBuscafornecedorLista.Name = "txtBuscafornecedorLista";
+            txtBuscafornecedorLista.Size = new Size(210, 23);
+            txtBuscafornecedorLista.TabIndex = 0;
+            txtBuscafornecedorLista.TextChanged += txtBuscafornecedorLista_TextChanged;
+            // 
+            // txtFornecedores
+            // 
+            txtFornecedores.BorderStyle = BorderStyle.None;
+            txtFornecedores.Font = new Font("Snap ITC", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtFornecedores.Location = new Point(291, 12);
+            txtFornecedores.Name = "txtFornecedores";
+            txtFornecedores.Size = new Size(194, 31);
+            txtFornecedores.TabIndex = 1;
+            txtFornecedores.Text = "Fornecedores";
+            // 
             // FrmFornecedores
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(txtFornecedores);
             Controls.Add(TabCtFornecedores);
             Name = "FrmFornecedores";
             StartPosition = FormStartPosition.CenterScreen;
@@ -363,7 +553,12 @@
             CadFornecedores.ResumeLayout(false);
             CadFornecedores.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dgvFornecedor).EndInit();
+            ListaFornecedores.ResumeLayout(false);
+            ListaFornecedores.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvBuscaProdutoFornecedor).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvBuscaFornecedor).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -399,5 +594,26 @@
         private DataGridViewTextBoxColumn clnContatoFornecedor;
         private DataGridViewTextBoxColumn clnRazaoSocial;
         private DataGridViewTextBoxColumn clnTelefoneFornecedor;
+        private DataGridView dgvBuscaProdutoFornecedor;
+        private DataGridView dgvBuscaFornecedor;
+        private Label lblBuscaFornecedor;
+        private TextBox txtBuscafornecedorLista;
+        private DataGridViewTextBoxColumn clnIDBuscaFornecedor;
+        private DataGridViewTextBoxColumn clnRazaoSocialBuscaFornecedor;
+        private DataGridViewTextBoxColumn clnFantasiaBuscaFornecedor;
+        private DataGridViewTextBoxColumn clnCNPJBuscaFornecedor;
+        private DataGridViewTextBoxColumn clnContatoBuscaFornecedor;
+        private DataGridViewTextBoxColumn clnTelefoneBuscaFornecedor;
+        private DataGridViewTextBoxColumn clnEmailBuscaFornecedor;
+        private DataGridViewTextBoxColumn dgvIDBuscaProdutoFornecedor;
+        private DataGridViewTextBoxColumn dgvCorBarraBuscaProdutoFornecedor;
+        private DataGridViewTextBoxColumn dgvDescricaoBuscaProdutoFornecedor;
+        private DataGridViewTextBoxColumn dgvValorUnitBuscaProdutoFornecedor;
+        private DataGridViewTextBoxColumn dgvUnidadeVendaBuscaProdutoFornecedor;
+        private DataGridViewTextBoxColumn dgvCategoriaBuscaProdutoFornecedor;
+        private DataGridViewTextBoxColumn dgvEstoqueMinimoBuscaProdutoFornecedor;
+        private DataGridViewTextBoxColumn dgvClasseDescontoBuscaProdutoFornecedor;
+        private DataGridViewTextBoxColumn dgvDataCadBuscaProdutoFornecedor;
+        private TextBox txtFornecedores;
     }
 }
