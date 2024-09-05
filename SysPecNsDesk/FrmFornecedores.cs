@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -16,22 +17,18 @@ namespace SysPecNsDesk
         public FrmFornecedores()
         {
             InitializeComponent();
+            txtRazaoSocial.Focus();
         }
 
         private void btnAdicionar_Click(object sender, EventArgs e)
         {
-            if (txtRazaoSocial.Text.Length > 0)
-            {
-                btnAdicionar.Enabled = true;
-            }
             Fornecedor fornecedor = new(
                 txtRazaoSocial.Text,
                 txtNomeFantasia.Text,
                 txtCnpj.Text,
                 txtContatoFornecedor.Text,
                 txtTelefoneFornecedor.Text,
-                txtEmailFornecedor.Text,
-                Fornecedor.ObterPorID(Convert.ToInt32(cmbCategoriaFornecedor.SelectedValue))
+                txtEmailFornecedor.Text
                 );
             fornecedor.Inserir();
             if (fornecedor.Id > 0)
@@ -51,7 +48,9 @@ namespace SysPecNsDesk
             else
             {
                 MessageBox.Show("Falha ao Gravar Fornecedor!!");
+                FrmFornecedores_Load(sender, e);
             }
+
         }
 
         private void CadFornecedores_Click(object sender, EventArgs e)
@@ -84,7 +83,6 @@ namespace SysPecNsDesk
                 dgvFornecedor.Rows[cont].Cells[4].Value = fornecedor.Contato;
                 dgvFornecedor.Rows[cont].Cells[5].Value = fornecedor.Telefone;
                 dgvFornecedor.Rows[cont].Cells[6].Value = fornecedor.Email;
-                dgvFornecedor.Rows[cont].Cells[7].Value = fornecedor.Categoria;
                 cont++;
             }
         }
@@ -100,6 +98,62 @@ namespace SysPecNsDesk
             {
                 CarregaGrid();
             }
+        }
+
+        private void btnConsultar_Click(object sender, EventArgs e)
+        {
+            if (btnConsultar.Text == "&Consultar")
+            {
+                txtRazaoSocial.Clear();
+                txtNomeFantasia.Clear();
+                txtCnpj.Clear();
+                txtContatoFornecedor.Clear();
+                txtEmailFornecedor.Clear();
+                txtTelefoneFornecedor.Clear();
+                btnConsultar.Text = "&Obter Por ID";
+                txtIDFornecedor.Focus();
+                txtIDFornecedor.ReadOnly = false;
+            }
+            else if (txtIDFornecedor.Text.Length > 0)
+            {
+                Fornecedor fornecedor = Fornecedor.ObterPorID(int.Parse(txtIDFornecedor.Text));
+                txtRazaoSocial.Text = fornecedor.Razao_Social;
+                txtNomeFantasia.Text = fornecedor.Fantasia;
+                txtContatoFornecedor.Text = fornecedor.Contato;
+                txtTelefoneFornecedor.Text = fornecedor.Telefone;
+                txtEmailFornecedor.Text = fornecedor.Email;
+                txtCnpj.Text = fornecedor.Cnpj;
+                btnEditar.Enabled = true;
+            }
+        }
+
+        private void btnEditar_Click(object sender, EventArgs e)
+        {
+            Fornecedor fornecedor = new(int.Parse(txtIDFornecedor.Text),
+                txtRazaoSocial.Text,
+                txtNomeFantasia.Text,
+                txtCnpj.Text,
+                txtContatoFornecedor.Text,
+                txtTelefoneFornecedor.Text,
+                txtEmailFornecedor.Text
+                );
+            fornecedor.Atualizar();
+            MessageBox.Show($"O Fornecedor {fornecedor.Razao_Social}, Com o ID {fornecedor.Id} foi alterado com Sucesso!!");
+            btnEditar.Enabled = false;
+            txtIDFornecedor.ReadOnly = true;
+            btnConsultar.Text = "&Consultar";
+            LimpaControles();
+            FrmFornecedores_Load(sender, e);
+        }
+        private void LimpaControles()
+        {
+            txtIDFornecedor.Clear();
+                txtRazaoSocial.Clear();
+                txtNomeFantasia.Clear();
+                txtCnpj.Clear();
+                txtContatoFornecedor.Clear();
+                txtTelefoneFornecedor.Clear();
+                txtEmailFornecedor.Clear();
         }
     }
 }

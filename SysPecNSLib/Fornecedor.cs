@@ -77,12 +77,14 @@ namespace SysPecNSLib
             cmd.Parameters.AddWithValue("spcontato", Contato);
             cmd.Parameters.AddWithValue("sptelefone", Telefone);
             cmd.Parameters.AddWithValue("spemail", Email);
-            Id = Convert.ToInt32((cmd.ExecuteScalar()));
+            Id = Convert.ToInt32( cmd.ExecuteScalar());
+            
         }
         public void Atualizar()
         {
             var cmd = Banco.Abrir();
             cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("spid",Id);
             cmd.CommandText = "sp_fornecedores_update";
             cmd.Parameters.AddWithValue("sprazao_social", Razao_Social);
             cmd.Parameters.AddWithValue("spfantasia", Fantasia );

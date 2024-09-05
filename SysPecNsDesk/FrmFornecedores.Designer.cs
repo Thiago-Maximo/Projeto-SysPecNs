@@ -30,6 +30,7 @@
         {
             TabCtFornecedores = new TabControl();
             CadFornecedores = new TabPage();
+            txtBuscaFornecedor = new TextBox();
             dgvFornecedor = new DataGridView();
             clnIdFornecedor = new DataGridViewTextBoxColumn();
             clnNomeFantasia = new DataGridViewTextBoxColumn();
@@ -38,7 +39,6 @@
             clnContatoFornecedor = new DataGridViewTextBoxColumn();
             clnRazaoSocial = new DataGridViewTextBoxColumn();
             clnTelefoneFornecedor = new DataGridViewTextBoxColumn();
-            clnCategoriaFornecedor = new DataGridViewTextBoxColumn();
             lblCategoriaFornecedor = new Label();
             cmbCategoriaFornecedor = new ComboBox();
             btnConsultar = new Button();
@@ -59,7 +59,6 @@
             lblRazaoSocial = new Label();
             lblIDFornecedor = new Label();
             ListaFornecedores = new TabPage();
-            txtBuscaFornecedor = new TextBox();
             TabCtFornecedores.SuspendLayout();
             CadFornecedores.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvFornecedor).BeginInit();
@@ -107,12 +106,20 @@
             CadFornecedores.UseVisualStyleBackColor = true;
             CadFornecedores.Click += CadFornecedores_Click;
             // 
+            // txtBuscaFornecedor
+            // 
+            txtBuscaFornecedor.Location = new Point(49, 186);
+            txtBuscaFornecedor.Name = "txtBuscaFornecedor";
+            txtBuscaFornecedor.Size = new Size(455, 23);
+            txtBuscaFornecedor.TabIndex = 20;
+            txtBuscaFornecedor.TextChanged += txtBuscaFornecedor_TextChanged;
+            // 
             // dgvFornecedor
             // 
             dgvFornecedor.AllowUserToAddRows = false;
             dgvFornecedor.AllowUserToDeleteRows = false;
             dgvFornecedor.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvFornecedor.Columns.AddRange(new DataGridViewColumn[] { clnIdFornecedor, clnNomeFantasia, clnCnpj, clnEmailFornecedor, clnContatoFornecedor, clnRazaoSocial, clnTelefoneFornecedor, clnCategoriaFornecedor });
+            dgvFornecedor.Columns.AddRange(new DataGridViewColumn[] { clnIdFornecedor, clnNomeFantasia, clnCnpj, clnEmailFornecedor, clnContatoFornecedor, clnRazaoSocial, clnTelefoneFornecedor });
             dgvFornecedor.Location = new Point(49, 215);
             dgvFornecedor.Name = "dgvFornecedor";
             dgvFornecedor.ReadOnly = true;
@@ -168,20 +175,15 @@
             clnTelefoneFornecedor.Name = "clnTelefoneFornecedor";
             clnTelefoneFornecedor.ReadOnly = true;
             // 
-            // clnCategoriaFornecedor
-            // 
-            clnCategoriaFornecedor.HeaderText = "Categoria";
-            clnCategoriaFornecedor.Name = "clnCategoriaFornecedor";
-            clnCategoriaFornecedor.ReadOnly = true;
-            // 
             // lblCategoriaFornecedor
             // 
             lblCategoriaFornecedor.AutoSize = true;
             lblCategoriaFornecedor.Location = new Point(385, 84);
             lblCategoriaFornecedor.Name = "lblCategoriaFornecedor";
             lblCategoriaFornecedor.Size = new Size(120, 15);
-            lblCategoriaFornecedor.TabIndex = 18;
+            lblCategoriaFornecedor.TabIndex = 17;
             lblCategoriaFornecedor.Text = "Categoria de Produto";
+            lblCategoriaFornecedor.Visible = false;
             // 
             // cmbCategoriaFornecedor
             // 
@@ -189,34 +191,37 @@
             cmbCategoriaFornecedor.FormattingEnabled = true;
             cmbCategoriaFornecedor.Location = new Point(383, 102);
             cmbCategoriaFornecedor.Name = "cmbCategoriaFornecedor";
-            cmbCategoriaFornecedor.Size = new Size(121, 23);
-            cmbCategoriaFornecedor.TabIndex = 17;
+            cmbCategoriaFornecedor.Size = new Size(161, 23);
+            cmbCategoriaFornecedor.TabIndex = 6;
+            cmbCategoriaFornecedor.Visible = false;
             // 
             // btnConsultar
             // 
             btnConsultar.Location = new Point(261, 148);
             btnConsultar.Name = "btnConsultar";
             btnConsultar.Size = new Size(75, 23);
-            btnConsultar.TabIndex = 16;
+            btnConsultar.TabIndex = 9;
             btnConsultar.Text = "&Consultar";
             btnConsultar.UseVisualStyleBackColor = true;
+            btnConsultar.Click += btnConsultar_Click;
             // 
             // btnEditar
             // 
+            btnEditar.Enabled = false;
             btnEditar.Location = new Point(155, 148);
             btnEditar.Name = "btnEditar";
             btnEditar.Size = new Size(75, 23);
-            btnEditar.TabIndex = 15;
+            btnEditar.TabIndex = 8;
             btnEditar.Text = "&Editar";
             btnEditar.UseVisualStyleBackColor = true;
+            btnEditar.Click += btnEditar_Click;
             // 
             // btnAdicionar
             // 
-            btnAdicionar.Enabled = false;
             btnAdicionar.Location = new Point(49, 148);
             btnAdicionar.Name = "btnAdicionar";
             btnAdicionar.Size = new Size(75, 23);
-            btnAdicionar.TabIndex = 14;
+            btnAdicionar.TabIndex = 7;
             btnAdicionar.Text = "&Adicionar";
             btnAdicionar.UseVisualStyleBackColor = true;
             btnAdicionar.Click += btnAdicionar_Click;
@@ -226,47 +231,48 @@
             txtContatoFornecedor.Location = new Point(49, 102);
             txtContatoFornecedor.Name = "txtContatoFornecedor";
             txtContatoFornecedor.Size = new Size(98, 23);
-            txtContatoFornecedor.TabIndex = 13;
+            txtContatoFornecedor.TabIndex = 3;
             // 
             // txtRazaoSocial
             // 
             txtRazaoSocial.Location = new Point(107, 38);
             txtRazaoSocial.Name = "txtRazaoSocial";
             txtRazaoSocial.Size = new Size(100, 23);
-            txtRazaoSocial.TabIndex = 12;
+            txtRazaoSocial.TabIndex = 0;
             // 
             // txtTelefoneFornecedor
             // 
             txtTelefoneFornecedor.Location = new Point(159, 102);
             txtTelefoneFornecedor.Name = "txtTelefoneFornecedor";
             txtTelefoneFornecedor.Size = new Size(100, 23);
-            txtTelefoneFornecedor.TabIndex = 11;
+            txtTelefoneFornecedor.TabIndex = 4;
             // 
             // txtEmailFornecedor
             // 
             txtEmailFornecedor.Location = new Point(271, 102);
             txtEmailFornecedor.Name = "txtEmailFornecedor";
             txtEmailFornecedor.Size = new Size(100, 23);
-            txtEmailFornecedor.TabIndex = 10;
+            txtEmailFornecedor.TabIndex = 5;
             // 
             // txtCnpj
             // 
             txtCnpj.Location = new Point(323, 38);
             txtCnpj.Name = "txtCnpj";
             txtCnpj.Size = new Size(100, 23);
-            txtCnpj.TabIndex = 9;
+            txtCnpj.TabIndex = 2;
             // 
             // txtNomeFantasia
             // 
             txtNomeFantasia.Location = new Point(215, 38);
             txtNomeFantasia.Name = "txtNomeFantasia";
             txtNomeFantasia.Size = new Size(100, 23);
-            txtNomeFantasia.TabIndex = 8;
+            txtNomeFantasia.TabIndex = 1;
             // 
             // txtIDFornecedor
             // 
             txtIDFornecedor.Location = new Point(49, 38);
             txtIDFornecedor.Name = "txtIDFornecedor";
+            txtIDFornecedor.ReadOnly = true;
             txtIDFornecedor.Size = new Size(50, 23);
             txtIDFornecedor.TabIndex = 7;
             // 
@@ -276,7 +282,7 @@
             lblFantasia.Location = new Point(216, 20);
             lblFantasia.Name = "lblFantasia";
             lblFantasia.Size = new Size(86, 15);
-            lblFantasia.TabIndex = 6;
+            lblFantasia.TabIndex = 12;
             lblFantasia.Text = "Nome Fantasia";
             // 
             // lblEmailFornecedor
@@ -285,7 +291,7 @@
             lblEmailFornecedor.Location = new Point(271, 84);
             lblEmailFornecedor.Name = "lblEmailFornecedor";
             lblEmailFornecedor.Size = new Size(36, 15);
-            lblEmailFornecedor.TabIndex = 5;
+            lblEmailFornecedor.TabIndex = 16;
             lblEmailFornecedor.Text = "Email";
             // 
             // lblTelefoneFornecedor
@@ -294,7 +300,7 @@
             lblTelefoneFornecedor.Location = new Point(155, 84);
             lblTelefoneFornecedor.Name = "lblTelefoneFornecedor";
             lblTelefoneFornecedor.Size = new Size(51, 15);
-            lblTelefoneFornecedor.TabIndex = 4;
+            lblTelefoneFornecedor.TabIndex = 15;
             lblTelefoneFornecedor.Text = "Telefone";
             // 
             // lblContatoFornecedor
@@ -303,7 +309,7 @@
             lblContatoFornecedor.Location = new Point(51, 84);
             lblContatoFornecedor.Name = "lblContatoFornecedor";
             lblContatoFornecedor.Size = new Size(50, 15);
-            lblContatoFornecedor.TabIndex = 3;
+            lblContatoFornecedor.TabIndex = 14;
             lblContatoFornecedor.Text = "Contato";
             // 
             // lblCnpj
@@ -312,7 +318,7 @@
             lblCnpj.Location = new Point(353, 20);
             lblCnpj.Name = "lblCnpj";
             lblCnpj.Size = new Size(34, 15);
-            lblCnpj.TabIndex = 2;
+            lblCnpj.TabIndex = 13;
             lblCnpj.Text = "CNPJ";
             // 
             // lblRazaoSocial
@@ -321,7 +327,7 @@
             lblRazaoSocial.Location = new Point(107, 20);
             lblRazaoSocial.Name = "lblRazaoSocial";
             lblRazaoSocial.Size = new Size(72, 15);
-            lblRazaoSocial.TabIndex = 1;
+            lblRazaoSocial.TabIndex = 11;
             lblRazaoSocial.Text = "Razão Social";
             // 
             // lblIDFornecedor
@@ -330,7 +336,7 @@
             lblIDFornecedor.Location = new Point(49, 20);
             lblIDFornecedor.Name = "lblIDFornecedor";
             lblIDFornecedor.Size = new Size(18, 15);
-            lblIDFornecedor.TabIndex = 0;
+            lblIDFornecedor.TabIndex = 10;
             lblIDFornecedor.Text = "ID";
             // 
             // ListaFornecedores
@@ -338,18 +344,10 @@
             ListaFornecedores.Location = new Point(4, 24);
             ListaFornecedores.Name = "ListaFornecedores";
             ListaFornecedores.Padding = new Padding(3);
-            ListaFornecedores.Size = new Size(566, 330);
+            ListaFornecedores.Size = new Size(566, 358);
             ListaFornecedores.TabIndex = 1;
             ListaFornecedores.Text = "Lista de Fornecedores";
             ListaFornecedores.UseVisualStyleBackColor = true;
-            // 
-            // txtBuscaFornecedor
-            // 
-            txtBuscaFornecedor.Location = new Point(49, 186);
-            txtBuscaFornecedor.Name = "txtBuscaFornecedor";
-            txtBuscaFornecedor.Size = new Size(455, 23);
-            txtBuscaFornecedor.TabIndex = 20;
-            txtBuscaFornecedor.TextChanged += txtBuscaFornecedor_TextChanged;
             // 
             // FrmFornecedores
             // 
@@ -393,6 +391,7 @@
         private Button btnEditar;
         private Button btnAdicionar;
         private DataGridView dgvFornecedor;
+        private TextBox txtBuscaFornecedor;
         private DataGridViewTextBoxColumn clnIdFornecedor;
         private DataGridViewTextBoxColumn clnNomeFantasia;
         private DataGridViewTextBoxColumn clnCnpj;
@@ -400,7 +399,5 @@
         private DataGridViewTextBoxColumn clnContatoFornecedor;
         private DataGridViewTextBoxColumn clnRazaoSocial;
         private DataGridViewTextBoxColumn clnTelefoneFornecedor;
-        private DataGridViewTextBoxColumn clnCategoriaFornecedor;
-        private TextBox txtBuscaFornecedor;
     }
 }
