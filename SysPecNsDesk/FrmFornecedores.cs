@@ -193,15 +193,39 @@ namespace SysPecNsDesk
                 cont++;
             }
         }
+        /*private void CarregaGridBuscaProdutoFornecedor(int teste)
+        {
+            var lista = Produto.ObterPorlista();
+            dgvBuscaProdutoFornecedor.Rows.Clear();
+            int cont = 0;
+            foreach (var fornecedor in lista)
+            {
+                dgvBuscaProdutoFornecedor.Rows[cont].Cells[0].Value = fornecedor.Id;
+                dgvBuscaProdutoFornecedor.Rows[cont].Cells[1].Value = fornecedor.CodBar;
+                dgvBuscaProdutoFornecedor.Rows[cont].Cells[2].Value = fornecedor.descricao;
+                dgvBuscaProdutoFornecedor.Rows[cont].Cells[3].Value = fornecedor.ValorUnit;
+                dgvBuscaProdutoFornecedor.Rows[cont].Cells[4].Value = fornecedor.UnidadeVenda;
+                dgvBuscaProdutoFornecedor.Rows[cont].Cells[5].Value = fornecedor.Categoria;
+                dgvBuscaProdutoFornecedor.Rows[cont].Cells[6].Value = fornecedor.estoqueMinimo;
+                dgvBuscaProdutoFornecedor.Rows[cont].Cells[7].Value = fornecedor.ClasseDesconto;
+                dgvBuscaProdutoFornecedor.Rows[cont].Cells[8].Value = fornecedor.DataCad;
+            }
+            
+        }*/
         private void TabCtFornecedores_Selecting(object sender, TabControlCancelEventArgs e)
         {
             CarregaGridBuscaFornecedor();
         }
 
-        private void dgvBuscaProdutoFornecedor_SelectionChanged(object sender, DataGridViewCellEventArgs e)
+        /*private void dgvBuscaProdutoFornecedor_SelectionChanged(object sender, DataGridViewCellEventArgs e)
         {
-            //int teste = Convert.ToInt32(dgvBuscaProdutoFornecedor.Rows[dgvBuscaProdutoFornecedor.CurrentRow.Index].Cells[0]);
-            //CarregaGridBuscaFornecedor(teste);
-        }
+            
+        }*/
+
+        /*private void dgvBuscaFornecedor_SelectionChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            int teste = Convert.ToInt32(dgvBuscaProdutoFornecedor.Rows[dgvBuscaProdutoFornecedor.CurrentRow.Index].Cells[0]);
+            //CarregaGridBuscaProdutoFornecedor(teste);
+        }*/
     }
 }

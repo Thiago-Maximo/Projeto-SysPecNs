@@ -63,6 +63,16 @@ namespace SysPecNsDesk.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _3 {
+            get {
+                object obj = ResourceManager.GetObject("3", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Add {
             get {
                 object obj = ResourceManager.GetObject("Add", resourceCulture);
@@ -86,6 +96,16 @@ namespace SysPecNsDesk.Properties {
         internal static System.Drawing.Bitmap Edit {
             get {
                 object obj = ResourceManager.GetObject("Edit", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap User {
+            get {
+                object obj = ResourceManager.GetObject("User", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
