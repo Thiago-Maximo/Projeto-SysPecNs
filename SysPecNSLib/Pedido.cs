@@ -72,26 +72,107 @@ namespace SysPecNSLib
             cmd.Parameters.AddWithValue("spcliente_id",Cliente.Id);
             Id = Convert.ToInt32(cmd.ExecuteScalar());
         }
-        public void Alterar()
+        public void AlterarStatus()
         {
-
+            var cmd = Banco.Abrir();
+            cmd.CommandType = CommandType.Text;
+            cmd.CommandText = $"update pedidos set status = {Status} where id {Id}";
+            cmd.ExecuteNonQuery();
+        }
+        public void AtualizarDesconto()
+        {
+            var cmd = Banco.Abrir();
+            cmd.CommandType = CommandType.Text;
+            cmd.CommandText = $"update pedidos set desconto = {Desconto} where id = {Id}";
+            cmd.ExecuteNonQuery();
         }
         public static Pedido ObterPorID(int id)
         {
             Pedido pedido = new();
-
+            var cmd = Banco.Abrir();
+            cmd.CommandType = CommandType.Text;
+            cmd.CommandText = $"Select * from pedidos where id = {id}";
+            var dr = cmd.ExecuteReader();
+            //retorna 1 pedido ou nenhum registro
+            if (dr.Read())
+            {
+                pedido = new(
+                    dr.GetInt32(0),
+                    Usuario.ObterPorId(dr.GetInt32(1)),
+                    Cliente.ObterPorId(dr.GetInt32(2)),
+                    dr.GetDateTime(3),
+                    dr.GetString(4),
+                    dr.GetDouble(5)
+                    //[Incluir lista de Itens]
+                    //, ItemPedido.ObterListPorPedido(dr.GetInt32(0))
+                    );
+            }
             return pedido;
         }
-        public static List<Pedido> ObterLista(int id)
+        public static List<Pedido> ObterLista() //Retorna a lista de pedidos.
         {
             List<Pedido> pedidos = new();
-
+            var cmd = Banco.Abrir();
+            cmd.CommandType = CommandType.Text;
+            cmd.CommandText = "Select * from pedidos";
+            var dr = cmd.ExecuteReader();
+            while (dr.Read())
+            {
+                pedidos.Add(new(
+                    dr.GetInt32(0),
+                    Usuario.ObterPorId(dr.GetInt32(1)),
+                    Cliente.ObterPorId(dr.GetInt32(2)),
+                    dr.GetDateTime(3),
+                    dr.GetString(4),
+                    dr.GetDouble(5)
+                    //[Incluir lista de Itens]
+                    //, ItemPedido.ObterListPorPedido(dr.GetInt32(0))
+                    ));
+            }
             return pedidos;
         }
-        public static List<Pedido> ObterListaPorCliente(int IdCliente=0,int IdUsuario=0)
+        public static List<Pedido> ObterListaPorCliente(int id) //Retorna a lista de pedidos do cliente informado caso haja.
         {
             List<Pedido> pedidos = new();
-               
+            var cmd = Banco.Abrir();
+            cmd.CommandType = CommandType.Text;
+            cmd.CommandText = $"Select * from pedidos where cliente_id = {id}";
+            var dr = cmd.ExecuteReader();
+            while (dr.Read())
+            {
+                pedidos.Add(new(
+                   dr.GetInt32(0),
+                   Usuario.ObterPorId(dr.GetInt32(1)),
+                   Cliente.ObterPorId(dr.GetInt32(2)),
+                   dr.GetDateTime(3),
+                   dr.GetString(4),
+                   dr.GetDouble(5)
+                   //[Incluir lista de Itens]
+                   //, ItemPedido.ObterListPorPedido(dr.GetInt32(0))
+                   ));
+            }
+            return pedidos;
+        }
+        public static List<Pedido> ObterListaPorUsuario(int id) //Retorna a lista de pedidos do usuario informado caso haja.
+        {
+            List<Pedido> pedidos = new();
+            var cmd = Banco.Abrir();
+            cmd.CommandType = CommandType.Text;
+            cmd.CommandText = $"Select * from pedidos where usuario_id = {id}";
+            var dr = cmd.ExecuteReader();
+            while (dr.Read())
+            {
+                pedidos.Add(new(
+                   dr.GetInt32(0),
+                   Usuario.ObterPorId(dr.GetInt32(1)),
+                   Cliente.ObterPorId(dr.GetInt32(2)),
+                   dr.GetDateTime(3),
+                   dr.GetString(4),
+                   dr.GetDouble(5)
+                   //[Incluir lista de Itens]
+                   //, ItemPedido.ObterListPorPedido(dr.GetInt32(0))
+                   ));
+            }
             return pedidos;
         }
     }

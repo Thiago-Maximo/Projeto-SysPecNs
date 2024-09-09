@@ -182,7 +182,6 @@
             Name = "FrmPrincipal";
             Text = "Sistema de Controle de Loja - SysPecDb";
             WindowState = FormWindowState.Maximized;
-            Load += FrmPrincipal_Load;
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
             statusStrip1.ResumeLayout(false);
