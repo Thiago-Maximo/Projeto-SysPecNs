@@ -134,6 +134,8 @@
             // chkAtivo
             // 
             chkAtivo.AutoSize = true;
+            chkAtivo.Checked = true;
+            chkAtivo.CheckState = CheckState.Checked;
             chkAtivo.Location = new Point(178, 140);
             chkAtivo.Name = "chkAtivo";
             chkAtivo.Size = new Size(54, 19);

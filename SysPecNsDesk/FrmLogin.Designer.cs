@@ -110,7 +110,7 @@
             // lblTextoLogin
             // 
             lblTextoLogin.AutoSize = true;
-            lblTextoLogin.Font = new Font("Stencil", 27.75F, FontStyle.Italic, GraphicsUnit.Point, 0);
+            lblTextoLogin.Font = new Font("Stencil", 27.75F, FontStyle.Italic | FontStyle.Underline, GraphicsUnit.Point, 0);
             lblTextoLogin.Location = new Point(161, 24);
             lblTextoLogin.Name = "lblTextoLogin";
             lblTextoLogin.Size = new Size(125, 44);
