@@ -104,7 +104,7 @@ namespace SysPecNSLib
                     dr.GetString(4),
                     dr.GetDouble(5)
                     //[Incluir lista de Itens]
-                    //, ItemPedido.ObterListPorPedido(dr.GetInt32(0))
+                    ,ItemPedido.ObterListaPorPedido(dr.GetInt32(0))
                     );
             }
             return pedido;
@@ -126,7 +126,6 @@ namespace SysPecNSLib
                     dr.GetString(4),
                     dr.GetDouble(5)
                     //[Incluir lista de Itens]
-                    //, ItemPedido.ObterListPorPedido(dr.GetInt32(0))
                     ));
             }
             return pedidos;
@@ -148,7 +147,7 @@ namespace SysPecNSLib
                    dr.GetString(4),
                    dr.GetDouble(5)
                    //[Incluir lista de Itens]
-                   //, ItemPedido.ObterListPorPedido(dr.GetInt32(0))
+                   ,ItemPedido.ObterListaPorPedido(dr.GetInt32(0))
                    ));
             }
             return pedidos;
@@ -170,7 +169,6 @@ namespace SysPecNSLib
                    dr.GetString(4),
                    dr.GetDouble(5)
                    //[Incluir lista de Itens]
-                   //, ItemPedido.ObterListPorPedido(dr.GetInt32(0))
                    ));
             }
             return pedidos;
