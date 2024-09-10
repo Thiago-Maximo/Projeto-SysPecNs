@@ -134,6 +134,7 @@
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "FrmLogin";
             StartPosition = FormStartPosition.CenterScreen;
+            Load += FrmLogin_Load;
             ResumeLayout(false);
             PerformLayout();
         }
