@@ -12,7 +12,7 @@ namespace SysPecNSLib
 
         public int Id { get; set; }
        public string? CodBar { get; set; }
-       public string? descricao { get; set; }
+       public string? Descricao { get; set; }
        public double ValorUnit { get; set; }
        public string? UnidadeVenda { get; set; }
        public Categoria? Categoria { get; set; }
@@ -26,7 +26,7 @@ namespace SysPecNSLib
         {
             Id = id;
             CodBar = codBar;
-            this.descricao = descricao;
+            this.Descricao = descricao;
             ValorUnit = valorUnit;
             UnidadeVenda = unidadeVenda;
             Categoria = categoria;
@@ -38,7 +38,7 @@ namespace SysPecNSLib
         public Produto( string? codBar, string? descricao, double valorUnit, string? unidadeVenda, Categoria? categoria, double estoqueMinimo, double classeDesconto, byte?[] imagem, DateTime dataCad)
         {
             CodBar = codBar;
-            this.descricao = descricao;
+            this.Descricao = descricao;
             ValorUnit = valorUnit;
             UnidadeVenda = unidadeVenda;
             Categoria = categoria;
@@ -50,7 +50,7 @@ namespace SysPecNSLib
         public Produto(string? codBar, string? descricao, double valorUnit, string? unidadeVenda, Categoria? categoria, double estoqueMinimo, double classeDesconto, byte?[] imagem)
         {
             CodBar = codBar;
-            this.descricao = descricao;
+            this.Descricao = descricao;
             ValorUnit = valorUnit;
             UnidadeVenda = unidadeVenda;
             Categoria = categoria;
@@ -61,7 +61,7 @@ namespace SysPecNSLib
         public Produto(string? codBar, string? descricao, double valorUnit, string? unidadeVenda, Categoria? categoria, double estoqueMinimo, double classeDesconto)
         {
             CodBar = codBar;
-            this.descricao = descricao;
+            this.Descricao = descricao;
             ValorUnit = valorUnit;
             UnidadeVenda = unidadeVenda;
             Categoria = categoria;
@@ -78,7 +78,7 @@ namespace SysPecNSLib
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.CommandText = "sp_produto_insert";
             cmd.Parameters.AddWithValue("spcod_barras", CodBar);
-            cmd.Parameters.AddWithValue("spdescricao", descricao);
+            cmd.Parameters.AddWithValue("spdescricao", Descricao);
             cmd.Parameters.AddWithValue("spvalor_unit", ValorUnit);
             cmd.Parameters.AddWithValue("spunidade_venda",UnidadeVenda);
             cmd.Parameters.AddWithValue("spcategoria_id",Categoria.Id);
@@ -93,7 +93,7 @@ namespace SysPecNSLib
             cmd.Parameters.AddWithValue("spid",Id);
             cmd.CommandText = "sp_produto_update";
             cmd.Parameters.AddWithValue("spcod_barras", CodBar);
-            cmd.Parameters.AddWithValue("spdescricao", descricao);
+            cmd.Parameters.AddWithValue("spdescricao", Descricao);
             cmd.Parameters.AddWithValue("spvalor_unit", ValorUnit);
             cmd.Parameters.AddWithValue("spunidade_venda", UnidadeVenda);
             cmd.Parameters.AddWithValue("spcategoria_id", Categoria.Id);
@@ -128,7 +128,7 @@ namespace SysPecNSLib
         {
             Produto produto = new();
             var cmd = Banco.Abrir();
-            cmd.CommandText = $"Select * from produtos where id = {Id}";
+            cmd.CommandText = $"Select * from produtos where cod_barras = '{Id}'";
             var dr = cmd.ExecuteReader();
             while (dr.Read())
             {

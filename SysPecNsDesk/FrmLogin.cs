@@ -58,7 +58,8 @@ namespace SysPecNsDesk
 
         private void FrmLogin_Load(object sender, EventArgs e)
         {
-
+            txtEmailLogin.Text = "paulo@gmail";
+            txtSenhaLogin.Text = "123456";
         }
     }
 }

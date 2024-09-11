@@ -22,7 +22,7 @@ namespace SysPecNSLib
     // métodos contrutores
         public Cliente()
         {
-            Cliente cliente = new();
+
         }
         public Cliente(int? id, string? nome, string? cpf, string? telefone, string? email, DateTime? datanasc,DateTime? datacad, bool? ativo)
         {

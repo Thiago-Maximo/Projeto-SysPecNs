@@ -43,7 +43,7 @@ namespace SysPecNsDesk
                 dgvProdutos.Rows[cont].Cells[5].Value = produto.estoqueMinimo;
                 dgvProdutos.Rows[cont].Cells[6].Value = produto.ClasseDesconto;
                 dgvProdutos.Rows[cont].Cells[7].Value = produto.DataCad;
-                dgvProdutos.Rows[cont].Cells[8].Value = produto.descricao;
+                dgvProdutos.Rows[cont].Cells[8].Value = produto.Descricao;
                 cont++;
             }
         }
@@ -62,7 +62,7 @@ namespace SysPecNsDesk
             produto.Inserir();
             if (produto.Id > 0)
             {
-                MessageBox.Show($"O Produto {produto.descricao}, com o ID {produto.Id}");
+                MessageBox.Show($"O Produto {produto.Descricao}, com o ID {produto.Id}");
                 FrmProduto_Load(sender, e);
             }
         }
@@ -86,7 +86,7 @@ namespace SysPecNsDesk
                 Produto produto = Produto.ObterPorId(int.Parse(txtID.Text));
                 txtCodBarras.Text = produto.CodBar;
                 txtValorUnit.Text = Convert.ToString(produto.ValorUnit);
-                txtDescricao.Text = produto.descricao;
+                txtDescricao.Text = produto.Descricao;
                 txtDesconto.Text = produto.ClasseDesconto.ToString();
                 txtUnidadeVenda.Text = produto.UnidadeVenda;
                 //nmrEstoque.Value = produto.estoqueMinimo;
@@ -117,7 +117,7 @@ namespace SysPecNsDesk
                 double.Parse(txtDesconto.Text)
                 );
             produto.Atualizar();
-            MessageBox.Show($"Produto {produto.Id} - {produto.descricao} foi Atualizado com Sucesso!!!");
+            MessageBox.Show($"Produto {produto.Id} - {produto.Descricao} foi Atualizado com Sucesso!!!");
             btnEditar.Enabled = false;
             txtID.ReadOnly = true;
             btnConsultar.Text = "&Consultar";
