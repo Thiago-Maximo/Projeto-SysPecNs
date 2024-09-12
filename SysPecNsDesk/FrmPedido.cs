@@ -77,21 +77,8 @@ namespace SysPecNsDesk
             txtValorUnit.Text = "0";
             txtQuantidade.Text = "1";
             txtCodBar.Clear();
-            txtCodBar.Focus();
             PreencherGridItens();
-
-
-            txtValorFinal.Text = txtTotal.Text;
-            if (txtDescontoPedido.Text != string.Empty)
-            {
-                double total = double.Parse(txtSubTotal.Text) -
-                    double.Parse(txtDescontoPedido.Text) - double.Parse(txtDescontoItens.Text);
-                txtTotal.Text = total.ToString("#0.00");
-            }
-            else
-            {
-                txtDescontoPedido.Text = "0,00";
-            }
+            txtDescontoPedido.Focus();
         }
 
         private void PreencherGridItens()
@@ -126,27 +113,66 @@ namespace SysPecNsDesk
         private void btnFechar_Click(object sender, EventArgs e)
         {
             Close();
-            
+
         }
 
         private void txtValorFinal_TextChanged(object sender, EventArgs e)
         {
-           
+
         }
 
         private void txtDescontoPedido_TextChanged(object sender, EventArgs e)
         {
-            txtValorFinal.Text = txtValorFinal.Text;
-            if (txtDescontoPedido.Text != string.Empty)
+            try
             {
-                double total = double.Parse(txtSubTotal.Text) -
-                    double.Parse(txtDescontoPedido.Text) - double.Parse(txtDescontoItens.Text);
-                txtTotal.Text = total.ToString("#0.00");
+                // Verifica se o campo de desconto do pedido não está vazio
+                if (txtDescontoPedido.Text != string.Empty)
+                {
+                    // Tenta converter os valores dos campos de texto em double
+                    double subTotal = double.Parse(txtSubTotal.Text);
+                    double descontoPedido = double.Parse(txtDescontoPedido.Text);
+                    double descontoItens = double.Parse(txtDescontoItens.Text);
+
+                    // Calcula o total e exibe no campo de texto
+                    double total = subTotal - descontoPedido - descontoItens;
+                    txtTotal.Text = total.ToString("#0.00");
+                }
+                else
+                {
+                    // Se o campo estiver vazio, atribui "0,00" a ele
+                    txtDescontoPedido.Text = "0,00";
+                }
             }
-            else
+            catch (FormatException)
             {
-                txtDescontoPedido.Text = "0,00";
+                // Exibe uma mensagem de erro se o formato do texto não for um número válido
+                MessageBox.Show("Por favor, insira valores numéricos válidos.", "Erro de Formato", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            catch (Exception ex)
+            {
+                // Captura outras exceções e exibe uma mensagem de erro genérica
+                MessageBox.Show("Ocorreu um erro: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void txtTotal_TextChanged(object sender, EventArgs e)
+        {
+            txtValorFinal.Text = txtTotal.Text;
+        }
+
+        private void txtDescontoPedido_Enter(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(txtDescontoPedido.Text))
+            {
+                txtDescontoPedido.SelectionStart = 0;
+                txtDescontoPedido.SelectionLength = txtQuantidade.Text.Length;
+            }
+        }
+
+        private void btnBuscaIDCliente_Click(object sender, EventArgs e)
+        {
+            FrmBuscaCliente frmBuscaCliente = new();
+            frmBuscaCliente.Show();
         }
     }
 }

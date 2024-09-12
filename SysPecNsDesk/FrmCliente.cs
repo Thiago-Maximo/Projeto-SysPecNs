@@ -21,6 +21,7 @@ namespace SysPecNsDesk
         private void FrmCliente_Load(object sender, EventArgs e)
         {
             CarregaGrid();
+            CarregaGridBuscaClienteEndereco();
         }
 
         private void btnInserir_Click(object sender, EventArgs e)
@@ -123,30 +124,6 @@ namespace SysPecNsDesk
                 return false;
             }
         }
-
-        private void dgvEnderecos_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            // preechendo o data grid com os usuarios cadastrados
-            var lista = Usuario.ObterLista(txtComplemento.Text);
-            dgvEnderecos.Rows.Clear();
-            int cont = 0;
-            foreach (var usuario in lista)
-            {
-                dgvEnderecos.Rows.Add();
-                dgvEnderecos.Rows[cont].Cells[0].Value = usuario.Id;
-                dgvEnderecos.Rows[cont].Cells[1].Value = usuario.Nome;
-                dgvEnderecos.Rows[cont].Cells[2].Value = usuario.Email;
-                dgvEnderecos.Rows[cont].Cells[3].Value = usuario.Nivel.Nome;
-                dgvEnderecos.Rows[cont].Cells[4].Value = usuario.Ativo;
-                dgvEnderecos.Rows[cont].Cells[5].Value = usuario.Ativo;
-                dgvEnderecos.Rows[cont].Cells[6].Value = usuario.Ativo;
-                dgvEnderecos.Rows[cont].Cells[7].Value = usuario.Ativo;
-                dgvEnderecos.Rows[cont].Cells[8].Value = usuario.Ativo;
-                dgvEnderecos.Rows[cont].Cells[9].Value = usuario.Ativo;
-                cont++;
-            }
-        }
-
         private void btnInserirEndereco_Click(object sender, EventArgs e)
         {
             Endereco endereco = new(
@@ -224,31 +201,35 @@ namespace SysPecNsDesk
                 cont++;
             }
         }
-        private void CarregaGridEndereco(string? nome = "")
-        {
-            var lista = Cliente.ObterPorLista(nome);
-            dgvEnderecos.Rows.Clear();
-            int cont = 0;
-            foreach (var cliente in lista)
-            {
-                dgvEnderecos.Rows.Add();
-                dgvEnderecos.Rows[cont].Cells[0].Value = cliente.Id;
-                dgvEnderecos.Rows[cont].Cells[1].Value = cliente.Nome;
-                dgvEnderecos.Rows[cont].Cells[2].Value = cliente.Cpf;
-                dgvEnderecos.Rows[cont].Cells[3].Value = cliente.Telefone;
-                dgvEnderecos.Rows[cont].Cells[4].Value = cliente.Email;
-            }
-        }
-
         private void txtBuscaEndereco_TextChanged(object sender, EventArgs e)
         {
             if (txtBuscaEndereco.Text.Length > 0)
             {
-                CarregaGridEndereco(txtBuscaEndereco.Text);
+                CarregaGridBuscaClienteEndereco(txtBuscaEndereco.Text);
             }
             else
             {
-                CarregaGridEndereco();
+                CarregaGridBuscaClienteEndereco();
+            }
+        }
+        private void CarregaGridBuscaClienteEndereco(string? nome = "")
+        {
+            var lista = Endereco.ObterPorLista(nome);
+            dgvBuscaClientes.Rows.Clear();
+            int cont = 0;
+            foreach (var endereco in lista)
+            {
+                dgvBuscaClientes.Rows.Add();
+                dgvBuscaClientes.Rows[cont].Cells[0].Value = endereco.ClienteId;
+                dgvBuscaClientes.Rows[cont].Cells[1].Value = endereco.Cep;
+                dgvBuscaClientes.Rows[cont].Cells[2].Value = endereco.Logradouro;
+                dgvBuscaClientes.Rows[cont].Cells[3].Value = endereco.Numero;
+                dgvBuscaClientes.Rows[cont].Cells[4].Value = endereco.Complemento;
+                dgvBuscaClientes.Rows[cont].Cells[5].Value = endereco.Bairro;
+                dgvBuscaClientes.Rows[cont].Cells[6].Value = endereco.Cidade;
+                dgvBuscaClientes.Rows[cont].Cells[7].Value = endereco.Uf;
+                dgvBuscaClientes.Rows[cont].Cells[7].Value = endereco.TipoEndereco;
+                cont++;
             }
         }
     }

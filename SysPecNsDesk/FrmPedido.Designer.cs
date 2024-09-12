@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             grpIdentificacao = new GroupBox();
-            lblIDCLiente = new Label();
+            btnBuscaIDCliente = new Button();
             txtIDCliente = new TextBox();
             btnInsere = new Button();
             txtNomeCliente = new TextBox();
@@ -78,7 +78,7 @@
             // 
             // grpIdentificacao
             // 
-            grpIdentificacao.Controls.Add(lblIDCLiente);
+            grpIdentificacao.Controls.Add(btnBuscaIDCliente);
             grpIdentificacao.Controls.Add(txtIDCliente);
             grpIdentificacao.Controls.Add(btnInsere);
             grpIdentificacao.Controls.Add(txtNomeCliente);
@@ -91,14 +91,20 @@
             grpIdentificacao.TabStop = false;
             grpIdentificacao.Text = "Identificação";
             // 
-            // lblIDCLiente
+            // btnBuscaIDCliente
             // 
-            lblIDCLiente.AutoSize = true;
-            lblIDCLiente.Location = new Point(63, 83);
-            lblIDCLiente.Name = "lblIDCLiente";
-            lblIDCLiente.Size = new Size(44, 15);
-            lblIDCLiente.TabIndex = 5;
-            lblIDCLiente.Text = "Cliente";
+            btnBuscaIDCliente.FlatAppearance.BorderSize = 0;
+            btnBuscaIDCliente.FlatStyle = FlatStyle.Flat;
+            btnBuscaIDCliente.Image = Properties.Resources.User;
+            btnBuscaIDCliente.Location = new Point(6, 67);
+            btnBuscaIDCliente.Name = "btnBuscaIDCliente";
+            btnBuscaIDCliente.Size = new Size(106, 37);
+            btnBuscaIDCliente.TabIndex = 5;
+            btnBuscaIDCliente.Text = "Cliente";
+            btnBuscaIDCliente.TextAlign = ContentAlignment.MiddleRight;
+            btnBuscaIDCliente.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btnBuscaIDCliente.UseVisualStyleBackColor = true;
+            btnBuscaIDCliente.Click += btnBuscaIDCliente_Click;
             // 
             // txtIDCliente
             // 
@@ -189,6 +195,7 @@
             txtTotal.ReadOnly = true;
             txtTotal.Size = new Size(100, 26);
             txtTotal.TabIndex = 13;
+            txtTotal.TextChanged += txtTotal_TextChanged;
             // 
             // label3
             // 
@@ -426,7 +433,9 @@
             txtDescontoPedido.Name = "txtDescontoPedido";
             txtDescontoPedido.Size = new Size(100, 23);
             txtDescontoPedido.TabIndex = 8;
+            txtDescontoPedido.Text = "0,00";
             txtDescontoPedido.TextChanged += txtDescontoPedido_TextChanged;
+            txtDescontoPedido.Enter += txtDescontoPedido_Enter;
             // 
             // btnFechar
             // 
@@ -490,6 +499,7 @@
             // 
             // FrmPedido
             // 
+            AcceptButton = btnFechar;
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
@@ -534,7 +544,6 @@
         private TextBox txtIdPedido;
         private TextBox txtNomeCliente;
         private Button btnInsere;
-        private Label lblIDCLiente;
         private TextBox txtIDCliente;
         private TextBox txtDescricao;
         private TextBox txtCodBar;
@@ -567,5 +576,6 @@
         private DataGridViewTextBoxColumn clnDesconto;
         private DataGridViewTextBoxColumn clnTotalItem;
         private Label label4;
+        private Button btnBuscaIDCliente;
     }
 }

@@ -58,15 +58,19 @@
             DataCad = new DataGridViewTextBoxColumn();
             Ativo = new DataGridViewTextBoxColumn();
             CadEndereco = new TabPage();
+            dgvBuscaClientes = new DataGridView();
+            clnCliente_Id = new DataGridViewTextBoxColumn();
+            clnCep = new DataGridViewTextBoxColumn();
+            clnLogradouro = new DataGridViewTextBoxColumn();
+            clnNumero = new DataGridViewTextBoxColumn();
+            clnComplemento = new DataGridViewTextBoxColumn();
+            clnBairro = new DataGridViewTextBoxColumn();
+            clnCidade = new DataGridViewTextBoxColumn();
+            clnUF = new DataGridViewTextBoxColumn();
+            clnTipoEndereco = new DataGridViewTextBoxColumn();
             btnCancelarEndereco = new Button();
             btnDeletarEndereco = new Button();
             txtBuscaEndereco = new TextBox();
-            dgvEnderecos = new DataGridView();
-            IdCliente = new DataGridViewTextBoxColumn();
-            NomeCliente = new DataGridViewTextBoxColumn();
-            CPFCliente = new DataGridViewTextBoxColumn();
-            TelefoneCliente = new DataGridViewTextBoxColumn();
-            EmailCliente = new DataGridViewTextBoxColumn();
             btnEditarEndereco = new Button();
             btnInserirEndereco = new Button();
             txtTipoEndereco = new TextBox();
@@ -93,7 +97,7 @@
             CadCleinte.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvClientes).BeginInit();
             CadEndereco.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dgvEnderecos).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvBuscaClientes).BeginInit();
             SuspendLayout();
             // 
             // btnDeletar
@@ -372,10 +376,10 @@
             // CadEndereco
             // 
             CadEndereco.BackColor = Color.Silver;
+            CadEndereco.Controls.Add(dgvBuscaClientes);
             CadEndereco.Controls.Add(btnCancelarEndereco);
             CadEndereco.Controls.Add(btnDeletarEndereco);
             CadEndereco.Controls.Add(txtBuscaEndereco);
-            CadEndereco.Controls.Add(dgvEnderecos);
             CadEndereco.Controls.Add(btnEditarEndereco);
             CadEndereco.Controls.Add(btnInserirEndereco);
             CadEndereco.Controls.Add(txtTipoEndereco);
@@ -406,6 +410,85 @@
             CadEndereco.Text = "Cadastro de Endereço";
             CadEndereco.Click += CadEndereco_Click;
             // 
+            // dgvBuscaClientes
+            // 
+            dgvBuscaClientes.AllowUserToAddRows = false;
+            dgvBuscaClientes.AllowUserToDeleteRows = false;
+            dgvBuscaClientes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvBuscaClientes.Columns.AddRange(new DataGridViewColumn[] { clnCliente_Id, clnCep, clnLogradouro, clnNumero, clnComplemento, clnBairro, clnCidade, clnUF, clnTipoEndereco });
+            dgvBuscaClientes.Location = new Point(11, 230);
+            dgvBuscaClientes.Name = "dgvBuscaClientes";
+            dgvBuscaClientes.ReadOnly = true;
+            dgvBuscaClientes.RowHeadersVisible = false;
+            dgvBuscaClientes.Size = new Size(636, 137);
+            dgvBuscaClientes.TabIndex = 25;
+            // 
+            // clnCliente_Id
+            // 
+            clnCliente_Id.Frozen = true;
+            clnCliente_Id.HeaderText = "ID Do Cliente";
+            clnCliente_Id.Name = "clnCliente_Id";
+            clnCliente_Id.ReadOnly = true;
+            clnCliente_Id.Width = 120;
+            // 
+            // clnCep
+            // 
+            clnCep.Frozen = true;
+            clnCep.HeaderText = "CEP";
+            clnCep.Name = "clnCep";
+            clnCep.ReadOnly = true;
+            // 
+            // clnLogradouro
+            // 
+            clnLogradouro.Frozen = true;
+            clnLogradouro.HeaderText = "Logradouro";
+            clnLogradouro.Name = "clnLogradouro";
+            clnLogradouro.ReadOnly = true;
+            // 
+            // clnNumero
+            // 
+            clnNumero.Frozen = true;
+            clnNumero.HeaderText = "Numero";
+            clnNumero.Name = "clnNumero";
+            clnNumero.ReadOnly = true;
+            // 
+            // clnComplemento
+            // 
+            clnComplemento.Frozen = true;
+            clnComplemento.HeaderText = "Complemento";
+            clnComplemento.Name = "clnComplemento";
+            clnComplemento.ReadOnly = true;
+            // 
+            // clnBairro
+            // 
+            clnBairro.Frozen = true;
+            clnBairro.HeaderText = "Bairro";
+            clnBairro.Name = "clnBairro";
+            clnBairro.ReadOnly = true;
+            // 
+            // clnCidade
+            // 
+            clnCidade.Frozen = true;
+            clnCidade.HeaderText = "Cidade";
+            clnCidade.Name = "clnCidade";
+            clnCidade.ReadOnly = true;
+            // 
+            // clnUF
+            // 
+            clnUF.Frozen = true;
+            clnUF.HeaderText = "UF";
+            clnUF.Name = "clnUF";
+            clnUF.ReadOnly = true;
+            clnUF.Width = 50;
+            // 
+            // clnTipoEndereco
+            // 
+            clnTipoEndereco.Frozen = true;
+            clnTipoEndereco.HeaderText = "Tipo de Endereço";
+            clnTipoEndereco.Name = "clnTipoEndereco";
+            clnTipoEndereco.ReadOnly = true;
+            clnTipoEndereco.Width = 150;
+            // 
             // btnCancelarEndereco
             // 
             btnCancelarEndereco.Location = new Point(289, 166);
@@ -432,53 +515,6 @@
             txtBuscaEndereco.Size = new Size(535, 23);
             txtBuscaEndereco.TabIndex = 22;
             txtBuscaEndereco.TextChanged += txtBuscaEndereco_TextChanged;
-            // 
-            // dgvEnderecos
-            // 
-            dgvEnderecos.AllowUserToAddRows = false;
-            dgvEnderecos.AllowUserToDeleteRows = false;
-            dgvEnderecos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvEnderecos.Columns.AddRange(new DataGridViewColumn[] { IdCliente, NomeCliente, CPFCliente, TelefoneCliente, EmailCliente });
-            dgvEnderecos.Location = new Point(12, 224);
-            dgvEnderecos.Name = "dgvEnderecos";
-            dgvEnderecos.ReadOnly = true;
-            dgvEnderecos.RowHeadersVisible = false;
-            dgvEnderecos.Size = new Size(535, 143);
-            dgvEnderecos.TabIndex = 21;
-            dgvEnderecos.CellContentClick += dgvEnderecos_CellContentClick;
-            // 
-            // IdCliente
-            // 
-            IdCliente.Frozen = true;
-            IdCliente.HeaderText = "ID Do Cliente";
-            IdCliente.Name = "IdCliente";
-            IdCliente.ReadOnly = true;
-            // 
-            // NomeCliente
-            // 
-            NomeCliente.HeaderText = "Nome";
-            NomeCliente.Name = "NomeCliente";
-            NomeCliente.ReadOnly = true;
-            // 
-            // CPFCliente
-            // 
-            CPFCliente.HeaderText = "CPF";
-            CPFCliente.Name = "CPFCliente";
-            CPFCliente.ReadOnly = true;
-            // 
-            // TelefoneCliente
-            // 
-            TelefoneCliente.HeaderText = "Telefone";
-            TelefoneCliente.Name = "TelefoneCliente";
-            TelefoneCliente.ReadOnly = true;
-            TelefoneCliente.Width = 120;
-            // 
-            // EmailCliente
-            // 
-            EmailCliente.HeaderText = "Email";
-            EmailCliente.Name = "EmailCliente";
-            EmailCliente.ReadOnly = true;
-            EmailCliente.Width = 112;
             // 
             // btnEditarEndereco
             // 
@@ -679,7 +715,7 @@
             ((System.ComponentModel.ISupportInitialize)dgvClientes).EndInit();
             CadEndereco.ResumeLayout(false);
             CadEndereco.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dgvEnderecos).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvBuscaClientes).EndInit();
             ResumeLayout(false);
         }
 
@@ -727,7 +763,6 @@
         private TextBox txtIDCliente;
         private Button btnDeletarEndereco;
         private TextBox txtBuscaEndereco;
-        private DataGridView dgvEnderecos;
         private Button btnEditarEndereco;
         private Button btnInserirEndereco;
         private Button btnCancelarEndereco;
@@ -741,10 +776,15 @@
         private DataGridViewTextBoxColumn DataNasc;
         private DataGridViewTextBoxColumn DataCad;
         private DataGridViewTextBoxColumn Ativo;
-        private DataGridViewTextBoxColumn IdCliente;
-        private DataGridViewTextBoxColumn NomeCliente;
-        private DataGridViewTextBoxColumn CPFCliente;
-        private DataGridViewTextBoxColumn TelefoneCliente;
-        private DataGridViewTextBoxColumn EmailCliente;
+        private DataGridView dgvBuscaClientes;
+        private DataGridViewTextBoxColumn clnCliente_Id;
+        private DataGridViewTextBoxColumn clnCep;
+        private DataGridViewTextBoxColumn clnLogradouro;
+        private DataGridViewTextBoxColumn clnNumero;
+        private DataGridViewTextBoxColumn clnComplemento;
+        private DataGridViewTextBoxColumn clnBairro;
+        private DataGridViewTextBoxColumn clnCidade;
+        private DataGridViewTextBoxColumn clnUF;
+        private DataGridViewTextBoxColumn clnTipoEndereco;
     }
 }

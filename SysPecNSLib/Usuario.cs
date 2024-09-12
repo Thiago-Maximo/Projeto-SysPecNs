@@ -65,6 +65,7 @@ namespace SysPecNSLib
             {
                 Id = dr.GetInt32(0);
             }
+            cmd.Connection.Close();
         }
         /// <summary>
         /// Obter por Id é um método estatico que retorna um objeto usuario completo baseado no id informado
@@ -90,6 +91,7 @@ namespace SysPecNSLib
                     );
 
             }
+            cmd.Connection.Close();
             return usuario;
         }
         /// <summary>
@@ -124,6 +126,7 @@ namespace SysPecNSLib
                         )
                     );
             }
+            cmd.Connection.Close();
             return lista;
         }
         public static Usuario EfetuarLogin(string Email,string Senha)
