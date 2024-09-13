@@ -57,6 +57,9 @@ namespace SysPecNsDesk
                 }
                 txtValorUnit.ReadOnly = true;
                 txtQuantidade.Focus();
+            }
+            if ()
+            {
 
             }
         }

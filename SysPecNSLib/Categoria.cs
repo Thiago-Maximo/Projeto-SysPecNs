@@ -53,7 +53,7 @@ namespace SysPecNSLib
             var dr = cmd.ExecuteReader();
             if (dr.Read())
             {
-                categoria =new(dr.GetInt32(0),dr.GetString(1),null);
+                categoria =new(dr.GetInt32(0),dr.GetString(1));
             }
             return categoria;
         }

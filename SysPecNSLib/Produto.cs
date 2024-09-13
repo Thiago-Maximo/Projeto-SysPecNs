@@ -85,7 +85,7 @@ namespace SysPecNSLib
             cmd.Parameters.AddWithValue("spestoque_minimo",estoqueMinimo);
             cmd.Parameters.AddWithValue("spclasse_desconto",ClasseDesconto);
             Id = Convert.ToInt32((cmd.ExecuteScalar()));
-            cmd.Connection.Close();
+
         }
         public void Atualizar()
         {
@@ -148,7 +148,7 @@ namespace SysPecNSLib
                     dr.GetDateTime(9)
                     );
             }
-            cmd.Connection.Close();
+
             return produto;
         }
         public static List<Produto> ObterPorlista()
