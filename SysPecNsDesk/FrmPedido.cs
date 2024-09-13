@@ -52,12 +52,12 @@ namespace SysPecNsDesk
                 else
                 {
                     txtDescontoItem.Enabled = true;
-                    label4.Text = $" {produto.ValorUnit * produto.ClasseDesconto}";
-
+                    label4.Text = "R$" + (produto.ValorUnit * produto.ClasseDesconto).ToString("#0.00");
 
                 }
                 txtValorUnit.ReadOnly = true;
                 txtQuantidade.Focus();
+
             }
         }
 
