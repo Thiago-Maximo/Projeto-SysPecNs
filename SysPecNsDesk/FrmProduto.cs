@@ -50,15 +50,41 @@ namespace SysPecNsDesk
 
         private void btnAdicionar_Click(object sender, EventArgs e)
         {
-            Produto produto = new(
+            double valorUnit, desconto;
+            int categoriaId;
+
+            // Tentar converter txtValorUnit.Text para double
+            if (!double.TryParse(txtValorUnit.Text, out valorUnit))
+            {
+                MessageBox.Show("Valor unitário inválido.");
+                return;
+            }
+
+            // Tentar converter txtDesconto.Text para double
+            if (!double.TryParse(txtDesconto.Text, out desconto))
+            {
+                MessageBox.Show("Valor de desconto inválido.");
+                return;
+            }
+
+            // Tentar converter cmbCategoria.SelectedValue para int
+            if (!int.TryParse(cmbCategoria.SelectedValue.ToString(), out categoriaId))
+            {
+                MessageBox.Show("Categoria inválida.");
+                return;
+            }
+
+            Produto produto = new Produto(
                 txtCodBarras.Text,
                 txtDescricao.Text,
-                double.Parse(txtValorUnit.Text),
+                valorUnit,
                 txtUnidadeVenda.Text,
-                Categoria.ObterPorId(Convert.ToInt32(cmbCategoria.SelectedValue)),
+                Categoria.ObterPorId(categoriaId),
                 (int)nmrEstoque.Value,
-                double.Parse(txtDesconto.Text)
-                );
+                desconto
+            );
+
+            // Seguir com o restante do código
             produto.Inserir();
             if (produto.Id > 0)
             {
@@ -124,5 +150,6 @@ namespace SysPecNsDesk
             LimpaControles();
             FrmProduto_Load(sender, e);
         }
+        
     }
 }

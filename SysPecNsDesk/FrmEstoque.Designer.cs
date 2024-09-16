@@ -36,15 +36,14 @@
             grpEstoque = new GroupBox();
             tabEstoque = new TabControl();
             tabPageEstoque = new TabPage();
+            btnConsultaProduto = new Button();
             txtNomeProdutoEstoque = new TextBox();
             lblNomeProdutoEstoque = new Label();
-            txtConsultaEstoque = new TextBox();
             label1 = new Label();
             btnCancelarEstoque = new Button();
             btnAlterarEstoque = new Button();
             dgvEstoque = new DataGridView();
             clnProduto_id = new DataGridViewTextBoxColumn();
-            clnNomeProdutoEstoque = new DataGridViewTextBoxColumn();
             clnQuantidade = new DataGridViewTextBoxColumn();
             clnData_ultimo_movimento = new DataGridViewTextBoxColumn();
             tabPageListaEstoque = new TabPage();
@@ -84,7 +83,6 @@
             txtProduto_IdEstoque.Name = "txtProduto_IdEstoque";
             txtProduto_IdEstoque.Size = new Size(77, 23);
             txtProduto_IdEstoque.TabIndex = 1;
-            txtProduto_IdEstoque.Leave += txtProduto_IdEstoque_Leave;
             // 
             // txtQuantidadeEstoque
             // 
@@ -96,6 +94,7 @@
             // btnAdicionarEstoque
             // 
             btnAdicionarEstoque.BackColor = Color.White;
+            btnAdicionarEstoque.Cursor = Cursors.Hand;
             btnAdicionarEstoque.FlatAppearance.BorderSize = 0;
             btnAdicionarEstoque.FlatStyle = FlatStyle.Flat;
             btnAdicionarEstoque.Image = Properties.Resources.Add;
@@ -130,9 +129,9 @@
             // 
             // tabPageEstoque
             // 
+            tabPageEstoque.Controls.Add(btnConsultaProduto);
             tabPageEstoque.Controls.Add(txtNomeProdutoEstoque);
             tabPageEstoque.Controls.Add(lblNomeProdutoEstoque);
-            tabPageEstoque.Controls.Add(txtConsultaEstoque);
             tabPageEstoque.Controls.Add(label1);
             tabPageEstoque.Controls.Add(btnCancelarEstoque);
             tabPageEstoque.Controls.Add(btnAlterarEstoque);
@@ -149,6 +148,21 @@
             tabPageEstoque.TabIndex = 0;
             tabPageEstoque.Text = "Estoque";
             tabPageEstoque.UseVisualStyleBackColor = true;
+            // 
+            // btnConsultaProduto
+            // 
+            btnConsultaProduto.BackColor = Color.White;
+            btnConsultaProduto.BackgroundImage = Properties.Resources.Search;
+            btnConsultaProduto.BackgroundImageLayout = ImageLayout.Center;
+            btnConsultaProduto.Cursor = Cursors.Hand;
+            btnConsultaProduto.FlatAppearance.BorderSize = 0;
+            btnConsultaProduto.FlatStyle = FlatStyle.Flat;
+            btnConsultaProduto.Location = new Point(115, 90);
+            btnConsultaProduto.Name = "btnConsultaProduto";
+            btnConsultaProduto.Size = new Size(114, 34);
+            btnConsultaProduto.TabIndex = 12;
+            btnConsultaProduto.UseVisualStyleBackColor = false;
+            btnConsultaProduto.Click += btnConsultaProduto_Click;
             // 
             // txtNomeProdutoEstoque
             // 
@@ -167,14 +181,6 @@
             lblNomeProdutoEstoque.TabIndex = 10;
             lblNomeProdutoEstoque.Text = "Nome do Produto";
             // 
-            // txtConsultaEstoque
-            // 
-            txtConsultaEstoque.Location = new Point(115, 91);
-            txtConsultaEstoque.Name = "txtConsultaEstoque";
-            txtConsultaEstoque.Size = new Size(114, 23);
-            txtConsultaEstoque.TabIndex = 4;
-            txtConsultaEstoque.TextChanged += txtConsultaEstoque_TextChanged;
-            // 
             // label1
             // 
             label1.AutoSize = true;
@@ -188,6 +194,7 @@
             // btnCancelarEstoque
             // 
             btnCancelarEstoque.BackColor = Color.White;
+            btnCancelarEstoque.Cursor = Cursors.Hand;
             btnCancelarEstoque.FlatAppearance.BorderSize = 0;
             btnCancelarEstoque.FlatStyle = FlatStyle.Flat;
             btnCancelarEstoque.Image = Properties.Resources.Cancel;
@@ -202,6 +209,7 @@
             // btnAlterarEstoque
             // 
             btnAlterarEstoque.BackColor = Color.White;
+            btnAlterarEstoque.Cursor = Cursors.Hand;
             btnAlterarEstoque.FlatAppearance.BorderSize = 0;
             btnAlterarEstoque.FlatStyle = FlatStyle.Flat;
             btnAlterarEstoque.Image = Properties.Resources.Edit;
@@ -218,12 +226,12 @@
             dgvEstoque.AllowUserToAddRows = false;
             dgvEstoque.AllowUserToDeleteRows = false;
             dgvEstoque.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvEstoque.Columns.AddRange(new DataGridViewColumn[] { clnProduto_id, clnNomeProdutoEstoque, clnQuantidade, clnData_ultimo_movimento });
+            dgvEstoque.Columns.AddRange(new DataGridViewColumn[] { clnProduto_id, clnQuantidade, clnData_ultimo_movimento });
             dgvEstoque.Location = new Point(6, 215);
             dgvEstoque.Name = "dgvEstoque";
             dgvEstoque.ReadOnly = true;
             dgvEstoque.RowHeadersVisible = false;
-            dgvEstoque.Size = new Size(551, 105);
+            dgvEstoque.Size = new Size(393, 105);
             dgvEstoque.TabIndex = 8;
             // 
             // clnProduto_id
@@ -232,14 +240,6 @@
             clnProduto_id.HeaderText = "Produto ID";
             clnProduto_id.Name = "clnProduto_id";
             clnProduto_id.ReadOnly = true;
-            // 
-            // clnNomeProdutoEstoque
-            // 
-            clnNomeProdutoEstoque.Frozen = true;
-            clnNomeProdutoEstoque.HeaderText = "Nome do Produto";
-            clnNomeProdutoEstoque.Name = "clnNomeProdutoEstoque";
-            clnNomeProdutoEstoque.ReadOnly = true;
-            clnNomeProdutoEstoque.Width = 150;
             // 
             // clnQuantidade
             // 
@@ -327,13 +327,12 @@
         private DataGridView dgvEstoque;
         private DataGridView dataGridView1;
         private Label lbltextoEstoque1;
-        private TextBox txtConsultaEstoque;
         private Label label1;
         private TextBox txtNomeProdutoEstoque;
         private Label lblNomeProdutoEstoque;
         private DataGridViewTextBoxColumn clnProduto_id;
-        private DataGridViewTextBoxColumn clnNomeProdutoEstoque;
         private DataGridViewTextBoxColumn clnQuantidade;
         private DataGridViewTextBoxColumn clnData_ultimo_movimento;
+        private Button btnConsultaProduto;
     }
 }

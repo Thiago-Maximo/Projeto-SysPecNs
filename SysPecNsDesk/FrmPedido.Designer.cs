@@ -293,6 +293,7 @@
             txtQuantidade.TabIndex = 2;
             txtQuantidade.Text = "1";
             txtQuantidade.TextAlign = HorizontalAlignment.Right;
+            txtQuantidade.TextChanged += txtQuantidade_TextChanged;
             // 
             // btnAddItem
             // 

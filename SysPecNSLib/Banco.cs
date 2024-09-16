@@ -19,7 +19,7 @@ namespace SysPecNSLib
         public static MySqlCommand Abrir()
         {
             // Dados da conexão
-            string strconn = @"server=10.91.45.20;database=syspecdb;user=root;password=root";
+            string strconn = @"server=10.91.46.26;database=syspecdb;user=root;password=root";
             //string strconn = @"server=127.0.0.1;database=syspecdb;user=root;password=";
 
             // Criação da conexão e comando

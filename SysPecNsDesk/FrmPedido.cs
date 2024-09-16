@@ -15,6 +15,7 @@ namespace SysPecNsDesk
     public partial class FrmPedido : Form
     {
         Produto produto;
+        Estoque estoque;
         public FrmPedido()
         {
             InitializeComponent();
@@ -58,7 +59,7 @@ namespace SysPecNsDesk
                 txtValorUnit.ReadOnly = true;
                 txtQuantidade.Focus();
             }
-            if ()
+            //if ()
             {
 
             }
@@ -66,22 +67,65 @@ namespace SysPecNsDesk
 
         private void btnAddItem_Click(object sender, EventArgs e)
         {
-            ItemPedido item = new(
-                int.Parse(txtIdPedido.Text),
-                produto,
-                produto.ValorUnit,
-                double.Parse(txtQuantidade.Text),
-                double.Parse(txtDescontoItem.Text)
+            try
+            {
+                // Verifica se os campos estão preenchidos
+                if (string.IsNullOrEmpty(txtDescontoItem.Text) || string.IsNullOrEmpty(txtCodBar.Text) || string.IsNullOrEmpty(txtQuantidade.Text))
+                {
+                    MessageBox.Show("Preencha todos os campos necessários!");
+                    return;
+                }
+
+                // Converte os valores dos campos
+                double descontoItem = Convert.ToDouble(txtDescontoItem.Text);
+                Produto produto = Produto.ObterPorId(txtCodBar.Text);
+                Estoque estoque = new();  // Obtém o estoque relacionado ao produto
+                double qtdeProduto = double.Parse(txtQuantidade.Text);
+
+                // Calcula o valor máximo de desconto permitido
+                double maxDesconto = (produto.ValorUnit * produto.ClasseDesconto) * qtdeProduto;
+
+                // Verifica se a quantidade solicitada está disponível no estoque e se o desconto não excede o máximo permitido
+                if (qtdeProduto > estoque.Quantidade)
+                {
+                    MessageBox.Show($"Quantidade solicitada maior que a disponível. Estoque atual: {estoque.Quantidade} {produto.UnidadeVenda}(s).");
+                    return;
+                }
+                else if (descontoItem > maxDesconto)
+                {
+                    MessageBox.Show($"Desconto excede o valor máximo permitido. O desconto máximo permitido é: {maxDesconto:C2}.");
+                    return;
+                }
+
+                // Cria o item do pedido e o insere
+                ItemPedido item = new(
+                    int.Parse(txtIdPedido.Text),
+                    produto,
+                    produto.ValorUnit,
+                    qtdeProduto,
+                    descontoItem
                 );
-            item.Inserir();
-            produto = new();
-            txtDescontoItem.Text = "0";
-            txtDescricao.Clear();
-            txtValorUnit.Text = "0";
-            txtQuantidade.Text = "1";
-            txtCodBar.Clear();
-            PreencherGridItens();
-            txtDescontoPedido.Focus();
+
+                item.Inserir();
+
+                // Limpa os campos e prepara para o próximo item
+                produto = new Produto();
+                txtDescontoItem.Text = "0";
+                txtDescricao.Clear();
+                txtValorUnit.Text = "0";
+                txtQuantidade.Text = "1";
+                txtCodBar.Clear();
+                PreencherGridItens();
+                txtDescontoPedido.Focus();
+            }
+            catch (FormatException ex)
+            {
+                MessageBox.Show("Erro ao converter os valores numéricos. Verifique os campos preenchidos.");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ocorreu um erro: {ex.Message}");
+            }
         }
 
         private void PreencherGridItens()
@@ -104,7 +148,6 @@ namespace SysPecNsDesk
                 linha++;
                 total += item.ValorUnit * item.Quantidade - item.Desconto;
                 desconto += item.Desconto;
-
             }
             txtTotal.Text = total.ToString("#0.00");
             txtDescontoItens.Text = desconto.ToString("#0.00");
@@ -176,6 +219,11 @@ namespace SysPecNsDesk
         {
             FrmBuscaCliente frmBuscaCliente = new();
             frmBuscaCliente.Show();
+        }
+
+        private void txtQuantidade_TextChanged(object sender, EventArgs e)
+        {
+           
         }
     }
 }
